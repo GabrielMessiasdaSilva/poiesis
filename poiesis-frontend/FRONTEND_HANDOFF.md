@@ -4,10 +4,15 @@ Atualizado em 2026-10-07.
 
 ## Integração implementada
 
+- Administração: seções Produtos, Customizações, Produção e Relatórios, exclusivas do perfil `ADMIN`. Produtos e opções por produto têm cadastro, edição e exclusão com confirmação (inativação). Edição usa `PUT /v1/produtos/{id}` e `PUT /v1/customizacoes/{id}`, adicionados ao backend. Produção lista `GET /v1/producao` e altera status via `PATCH /v1/producao/{id}/status`. Catálogo e customizações recarregam ao ganhar foco para refletir alterações administrativas. Reinicie/recompile catálogo e customização para disponibilizar as novas rotas.
+
+- Cadastro: tela `/(auth)/cadastro`, acessível pelo login, envia `{ nome, email, senha }` para `POST /v1/auth/register`. Valida campos, e-mail e confirmação de senha, exibe conflito de e-mail e sucesso. Após criar a conta, o usuário retorna ao login; não é iniciada sessão automaticamente.
+
 - Login: `POST /v1/auth/login` com `{ email, senha }`. O backend retorna `{ token, tipo }`; o app salva o JWT e o usuário localmente e envia Bearer Token nas chamadas protegidas.
 - Catálogo: `GET /v1/produtos`, exibindo produtos ativos, descrição, categoria e preço retornados pela API.
 - Customizações: para cada produto, `GET /v1/customizacoes/produto/{produtoId}`; a tela apresenta somente opções ativas, com tipo, nome e preço adicional.
 - Pedidos: `POST /v1/pedidos` com um item `{ produtoId, quantidade: 1 }`; a listagem usa `GET /v1/pedidos` e mostra os itens, valores, data e status persistidos.
+- Corrigido o mapeamento de preço na integração pedido → catálogo: a resposta usa `precoBase`. O serviço de pedidos precisa ser recompilado/reiniciado para deixar de rejeitar produtos válidos por preço nulo.
 - A URL base padrão é `http://10.0.2.2:8080` no emulador Android e `http://localhost:8080` nas demais plataformas. `EXPO_PUBLIC_API_URL` deve apontar para a raiz do gateway, sem `/api` ou `/v1` no final.
 - Os scripts do Expo usam a porta `8090` para não conflitar com o login (`8081`) nem com os demais serviços (`8080` a `8086`). O gateway aceita origens HTTP/HTTPS na porta `8090` durante o desenvolvimento.
 

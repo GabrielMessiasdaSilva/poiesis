@@ -86,7 +86,10 @@ export default function (data) {
   });
 
   if (created) pedidosCriados.add(1);
-  else pedidosFalhos.add(1);
+  else {
+    pedidosFalhos.add(1);
+    console.error(`Falha ao criar pedido (${response.status}): ${response.body}`);
+  }
 }
 
 export function teardown(data) {

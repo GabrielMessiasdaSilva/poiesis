@@ -14,7 +14,7 @@ public class UsuarioDomainService {
 
     public Usuario cadastrarNovoUsuario(Usuario usuario) {
         if (usuarioRepositoryPort.existePorEmail(usuario.getEmail())) {
-            throw new IllegalArgumentException("E-mail já cadastrado no sistema.");
+            throw new EmailAlreadyRegisteredException();
         }
 
         // A role padrão é definida no servidor; o cadastro não escolhe privilégios.

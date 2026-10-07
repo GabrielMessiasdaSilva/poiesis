@@ -21,6 +21,6 @@ public class CatalogoIntegration implements CatalogoServicePort {
                 .retrieve()
                 .body(ProdutoCatalogoResponseDTO.class);
         if (produto == null) return null;
-        return new Produto(produto.getId(), produto.getNome(), produto.getPreco());
+        return new Produto(produto.getId(), produto.getNome(), produto.getPrecoBase());
     }
 }

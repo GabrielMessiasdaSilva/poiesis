@@ -34,6 +34,18 @@ class SessionSecurityTests {
         assertNotEquals(token, fresh);
         assertEquals(200, request("GET", "/v1/auth/session", fresh, null).statusCode());
     }
+    @Test void registrationValidatesFieldsAndRejectsDuplicateEmail() throws Exception {
+        assertEquals(400, request("POST", "/v1/auth/register", null,
+            "{\"nome\":\"\",\"email\":\"invalid\",\"senha\":\"short\"}").statusCode());
+        var body = "{\"nome\":\"Novo Usuário\",\"email\":\"register@test.com\",\"senha\":\"strong-password\",\"roles\":[\"ADMIN\"]}";
+        var created = request("POST", "/v1/auth/register", null, body);
+        assertEquals(201, created.statusCode());
+        assertTrue(created.body().contains("USER"));
+        assertFalse(created.body().contains("ADMIN"));
+        assertEquals(409, request("POST", "/v1/auth/register", null, body).statusCode());
+        assertEquals(200, request("POST", "/v1/auth/login", null,
+            "{\"email\":\"register@test.com\",\"senha\":\"strong-password\"}").statusCode());
+    }
     @Test void expiredTokenIsRejectedImmediately() throws Exception {
         var expiredJwt = new JwtService(new org.springframework.mock.env.MockEnvironment()
             .withProperty("application.jwt.secret", env.getRequiredProperty("application.jwt.secret"))

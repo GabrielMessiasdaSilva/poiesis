@@ -8,22 +8,22 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-07T09:03:27.950-03:00  INFO 8819 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Starting SpringframeworkApplication using Java 21.0.7 with PID 8819 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/customizacao/springframework/target/springframework-0.0.1-SNAPSHOT.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
-2026-10-07T09:03:27.959-03:00  INFO 8819 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-10-07T09:03:29.654-03:00  INFO 8819 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-07T09:03:29.737-03:00  INFO 8819 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 1 JPA repository interface.
-2026-10-07T09:03:30.194-03:00  INFO 8819 --- [customizacao-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=83c034da-5707-3ec9-a72d-6aa64c241bb0
-2026-10-07T09:03:31.056-03:00  INFO 8819 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
-2026-10-07T09:03:31.084-03:00  INFO 8819 --- [customizacao-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-10-07T09:03:31.084-03:00  INFO 8819 --- [customizacao-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-10-07T09:03:31.132-03:00  INFO 8819 --- [customizacao-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3037 ms
-2026-10-07T09:03:31.552-03:00  INFO 8819 --- [customizacao-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-10-07T09:03:31.643-03:00  INFO 8819 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
-2026-10-07T09:03:32.455-03:00  INFO 8819 --- [customizacao-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-07T09:03:32.512-03:00  INFO 8819 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-10-07T09:03:32.869-03:00  INFO 8819 --- [customizacao-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:customizacao user=SA
-2026-10-07T09:03:32.872-03:00  INFO 8819 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-10-07T09:03:32.972-03:00  INFO 8819 --- [customizacao-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-10-07T11:02:14.053-03:00  INFO 23293 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Starting SpringframeworkApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 23293 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/customizacao/springframework/target/customizacao-spring-0.0.1-SNAPSHOT.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
+2026-10-07T11:02:14.068-03:00  INFO 23293 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-10-07T11:02:16.821-03:00  INFO 23293 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-07T11:02:16.952-03:00  INFO 23293 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+2026-10-07T11:02:17.591-03:00  INFO 23293 --- [customizacao-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=83c034da-5707-3ec9-a72d-6aa64c241bb0
+2026-10-07T11:02:18.831-03:00  INFO 23293 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
+2026-10-07T11:02:18.871-03:00  INFO 23293 --- [customizacao-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-07T11:02:18.872-03:00  INFO 23293 --- [customizacao-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-07T11:02:18.933-03:00  INFO 23293 --- [customizacao-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 4671 ms
+2026-10-07T11:02:19.469-03:00  INFO 23293 --- [customizacao-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-07T11:02:19.607-03:00  INFO 23293 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-07T11:02:20.737-03:00  INFO 23293 --- [customizacao-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-07T11:02:20.789-03:00  INFO 23293 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-07T11:02:21.103-03:00  INFO 23293 --- [customizacao-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:customizacao user=SA
+2026-10-07T11:02:21.106-03:00  INFO 23293 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-07T11:02:21.217-03:00  INFO 23293 --- [customizacao-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:mem:customizacao]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -35,17 +35,370 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-10-07T09:03:34.493-03:00  INFO 8819 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-07T11:02:22.576-03:00  INFO 23293 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: create table tb_customizacoes (id bigint generated by default as identity, ativo boolean not null, nome varchar(160) not null, preco_adicional numeric(10,2) not null, produto_id bigint not null, tipo varchar(80) not null, version bigint not null, primary key (id))
-2026-10-07T09:03:34.590-03:00  INFO 8819 --- [customizacao-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-07T09:03:34.747-03:00  INFO 8819 --- [customizacao-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-10-07T09:03:36.810-03:00  INFO 8819 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8086 (http) with context path '/'
-2026-10-07T09:03:36.877-03:00  INFO 8819 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Started SpringframeworkApplication in 9.861 seconds (process running for 11.074)
-2026-10-07T09:22:19.389-03:00  INFO 8819 --- [customizacao-service] [nio-8086-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-10-07T09:22:19.406-03:00  INFO 8819 --- [customizacao-service] [nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-10-07T09:22:19.413-03:00  INFO 8819 --- [customizacao-service] [nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2026-10-07T11:02:22.666-03:00  INFO 23293 --- [customizacao-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:02:22.845-03:00  INFO 23293 --- [customizacao-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-07T11:02:25.275-03:00  INFO 23293 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8086 (http) with context path '/'
+2026-10-07T11:02:25.308-03:00  INFO 23293 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Started SpringframeworkApplication in 12.407 seconds (process running for 13.757)
+2026-10-07T11:10:51.429-03:00  INFO 23293 --- [customizacao-service] [nio-8086-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-07T11:10:51.429-03:00  INFO 23293 --- [customizacao-service] [nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-07T11:10:51.432-03:00  INFO 23293 --- [customizacao-service] [nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-7" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-5" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Exception in thread "http-nio-8086-exec-11" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Exception in thread "http-nio-8086-exec-8" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Exception in thread "http-nio-8086-exec-9" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-6" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-4" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-16" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Exception in thread "http-nio-8086-exec-18" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
+	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
+	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
+	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 17 more
+Exception in thread "SpringApplicationShutdownHook" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
+	at ch.qos.logback.classic.Logger.log(Logger.java:805)
+	at org.apache.commons.logging.impl.Slf4jLogFactory$Slf4jLocationAwareLog.log(Slf4jLogFactory.java:126)
+	at org.apache.commons.logging.impl.Slf4jLogFactory$Slf4jLocationAwareLog.warn(Slf4jLogFactory.java:146)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1202)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 13 more
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-07T11:27:41.110-03:00  INFO 28974 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Starting SpringframeworkApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 28974 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/.run-local/artifacts/customizacao.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
+2026-10-07T11:27:41.119-03:00  INFO 28974 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-10-07T11:27:43.757-03:00  INFO 28974 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-07T11:27:43.904-03:00  INFO 28974 --- [customizacao-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 1 JPA repository interface.
+2026-10-07T11:27:44.501-03:00  INFO 28974 --- [customizacao-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=83c034da-5707-3ec9-a72d-6aa64c241bb0
+2026-10-07T11:27:45.544-03:00  INFO 28974 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
+2026-10-07T11:27:45.570-03:00  INFO 28974 --- [customizacao-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-07T11:27:45.571-03:00  INFO 28974 --- [customizacao-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-07T11:27:45.623-03:00  INFO 28974 --- [customizacao-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 4335 ms
+2026-10-07T11:27:46.074-03:00  INFO 28974 --- [customizacao-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-07T11:27:46.178-03:00  INFO 28974 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-07T11:27:47.430-03:00  INFO 28974 --- [customizacao-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-07T11:27:47.492-03:00  INFO 28974 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-07T11:27:47.929-03:00  INFO 28974 --- [customizacao-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:customizacao user=SA
+2026-10-07T11:27:47.933-03:00  INFO 28974 --- [customizacao-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-07T11:27:48.055-03:00  INFO 28974 --- [customizacao-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:customizacao]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: CUSTOMIZACAO/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-07T11:27:50.585-03:00  INFO 28974 --- [customizacao-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table tb_customizacoes (id bigint generated by default as identity, ativo boolean not null, nome varchar(160) not null, preco_adicional numeric(10,2) not null, produto_id bigint not null, tipo varchar(80) not null, version bigint not null, primary key (id))
+2026-10-07T11:27:50.677-03:00  INFO 28974 --- [customizacao-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:27:50.857-03:00  INFO 28974 --- [customizacao-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-07T11:27:54.859-03:00  INFO 28974 --- [customizacao-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8086 (http) with context path '/'
+2026-10-07T11:27:54.943-03:00  INFO 28974 --- [customizacao-service] [           main] c.p.c.SpringframeworkApplication         : Started SpringframeworkApplication in 15.023 seconds (process running for 16.567)
+2026-10-07T11:28:00.461-03:00  INFO 28974 --- [customizacao-service] [nio-8086-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-07T11:28:00.462-03:00  INFO 28974 --- [customizacao-service] [nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-07T11:28:00.475-03:00  INFO 28974 --- [customizacao-service] [nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
 Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
 Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
 Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
 Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.id=?
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: update tb_customizacoes set ativo=?,nome=?,preco_adicional=?,produto_id=?,tipo=?,version=? where id=? and version=?
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
 Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,tipo,version,id) values (?,?,?,?,?,?,default)
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true

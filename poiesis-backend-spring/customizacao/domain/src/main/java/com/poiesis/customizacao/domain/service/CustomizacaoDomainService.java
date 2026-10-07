@@ -33,6 +33,13 @@ public class CustomizacaoDomainService {
         return customizacaoRepositoryPort.salvar(customizacao);
     }
 
+    public OpcaoCustomizacao atualizarOpcao(Long id, OpcaoCustomizacao dados) {
+        OpcaoCustomizacao atual = customizacaoRepositoryPort.buscarPorId(id)
+                .orElseThrow(() -> new IllegalArgumentException("Customização não encontrada."));
+        return criarOpcao(new OpcaoCustomizacao(id, dados.produtoId(), dados.tipo(), dados.nome(),
+                dados.precoAdicional(), atual.ativo()));
+    }
+
     public List<OpcaoCustomizacao> listarPorProduto(Long produtoId) {
         if (produtoId == null || produtoId <= 0) {
             throw new IllegalArgumentException("O ID do produto deve ser positivo.");

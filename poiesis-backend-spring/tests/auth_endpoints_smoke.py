@@ -35,7 +35,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix='poiesis-smoke-') as temp:
         def start(service):
             jar = ROOT / service / ('target' if service == 'gateway' else 'springframework/target') / (
-                'gateway-0.0.1-SNAPSHOT.jar' if service == 'gateway' else 'springframework-0.0.1-SNAPSHOT.jar')
+                'gateway-0.0.1-SNAPSHOT.jar' if service == 'gateway' else f'{service}-spring-0.0.1-SNAPSHOT.jar')
             args = ['java', '-Xmx256m', '-jar', str(jar), f'--server.port={PORTS[service]}',
                     '--spring.rabbitmq.listener.simple.auto-startup=false',
                     '--application.login.url=http://127.0.0.1:18081',
@@ -73,6 +73,8 @@ def main():
             admin = expect('gateway', '/v1/auth/login', 200, data={'email': 'admin@poiesis.com', 'senha': 'admin123'})['token']
             registered = expect('gateway', '/v1/auth/register', 201, data={
                 'nome': 'Smoke', 'email': 'smoke@test.com', 'senha': 'test-password', 'roles': ['ADMIN']})
+            expect('gateway', '/v1/auth/register', 409, data={'nome': 'Smoke', 'email': 'smoke@test.com', 'senha': 'test-password'})
+            expect('gateway', '/v1/auth/register', 400, data={'nome': '', 'email': 'invalid', 'senha': 'short'})
             assert registered['roles'] == ['USER'], 'Public registration must not allow ADMIN'
             user = expect('gateway', '/v1/auth/login', 200, data={'email': 'smoke@test.com', 'senha': 'test-password'})['token']
             expect('gateway', '/v1/pedidos', 200, user)

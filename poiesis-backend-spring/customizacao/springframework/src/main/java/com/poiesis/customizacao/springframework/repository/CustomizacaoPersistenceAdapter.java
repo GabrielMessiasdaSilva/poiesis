@@ -23,7 +23,18 @@ public class CustomizacaoPersistenceAdapter implements CustomizacaoRepositoryPor
     @Override
     @Transactional
     public OpcaoCustomizacao salvar(OpcaoCustomizacao customizacao) {
-        CustomizacaoEntity entity = CustomizacaoMapper.toEntity(customizacao);
+        CustomizacaoEntity entity;
+        if (customizacao.id() == null) {
+            entity = CustomizacaoMapper.toEntity(customizacao);
+        } else {
+            entity = repository.findById(customizacao.id())
+                    .orElseThrow(() -> new IllegalArgumentException("Customização não encontrada."));
+            entity.setProdutoId(customizacao.produtoId());
+            entity.setTipo(customizacao.tipo());
+            entity.setNome(customizacao.nome());
+            entity.setPrecoAdicional(customizacao.precoAdicional());
+            entity.setAtivo(customizacao.ativo());
+        }
         CustomizacaoEntity saved = repository.save(entity);
         return CustomizacaoMapper.toDomain(saved);
     }

@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import { router } from 'expo-router';
+import React, { useCallback, useState } from 'react';
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { router, useFocusEffect } from 'expo-router';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import api from '../../src/services/api';
 
@@ -20,16 +20,17 @@ function mensagemErro(error: any) {
 
 function CartaoProduto({ produto }: { produto: Produto }) {
     const [enviando, setEnviando] = useState(false);
+    const [mensagem, setMensagem] = useState('');
+    const [criado, setCriado] = useState(false);
     async function pedir() {
         setEnviando(true);
+        setMensagem(''); setCriado(false);
         try {
             await api.post('/v1/pedidos', { itens: [{ produtoId: produto.id, quantidade: 1 }] });
-            Alert.alert('Pedido criado', 'Seu pedido foi registrado. Você pode acompanhar o status na aba Pedidos.', [
-                { text: 'Ver pedidos', onPress: () => router.push('/(tabs)/pedidos') },
-                { text: 'Continuar no catálogo' },
-            ]);
+            setCriado(true);
+            setMensagem('Pedido criado. Acompanhe o status na aba Pedidos.');
         } catch (error) {
-            Alert.alert('Não foi possível criar o pedido', mensagemErro(error));
+            setMensagem(mensagemErro(error));
         } finally {
             setEnviando(false);
         }
@@ -54,6 +55,8 @@ function CartaoProduto({ produto }: { produto: Produto }) {
                     <Feather name="arrow-right" size={17} color="#FFFFFF" />
                 </>}
             </Pressable>
+            {mensagem ? <Text accessibilityRole={criado ? undefined : 'alert'} style={{ marginTop: 12, color: criado ? '#324B32' : '#9B3030' }}>{mensagem}</Text> : null}
+            {criado && <Pressable accessibilityRole="button" style={styles.button} onPress={() => router.push('/(tabs)/pedidos')}><Text style={styles.buttonText}>Ver pedidos</Text></Pressable>}
         </View>
     );
 }
@@ -76,14 +79,16 @@ export default function Catalogo() {
         }
     }, []);
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         let ativo = true;
+        setCarregando(true);
+        setErro('');
         api.get<Produto[]>('/v1/produtos')
             .then(({ data }) => { if (ativo) setProdutos(data); })
-            .catch((error) => { if (ativo) setErro(mensagemErro(error)); })
+            .catch((error) => { if (ativo) { setProdutos([]); setErro(mensagemErro(error)); } })
             .finally(() => { if (ativo) setCarregando(false); });
         return () => { ativo = false; };
-    }, []);
+    }, []));
 
     return (
         <FlatList

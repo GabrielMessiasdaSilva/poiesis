@@ -12,7 +12,7 @@ service_jar() {
     if [[ "$service" == "gateway" ]]; then
         printf '%s/gateway/target/gateway-0.0.1-SNAPSHOT.jar' "$ROOT"
     else
-        printf '%s/%s/springframework/target/springframework-0.0.1-SNAPSHOT.jar' "$ROOT" "$service"
+        printf '%s/%s/springframework/target/%s-spring-0.0.1-SNAPSHOT.jar' "$ROOT" "$service" "$service"
     fi
 }
 
@@ -41,7 +41,11 @@ process_matches_service() {
             cwd="$(readlink "/proc/$pid/cwd")" || return 1
             jar="$cwd/$jar"
         fi
-        [[ "$(readlink -m "$jar")" == "$(service_jar "$service")" ]]
+        # Reconhece também processos iniciados antes da correção dos artifactIds.
+        local canonical_jar legacy_jar
+        canonical_jar="$(readlink -m "$jar")"
+        legacy_jar="$ROOT/$service/springframework/target/springframework-0.0.1-SNAPSHOT.jar"
+        [[ "$canonical_jar" == "$(service_jar "$service")" || "$canonical_jar" == "$legacy_jar" || "$canonical_jar" == "$RUN_DIR/artifacts/$service.jar" ]]
         return
     done
     return 1
@@ -136,7 +140,12 @@ start_service() {
         exit 1
     fi
 
-    POIESIS_AUTH_DB="${POIESIS_AUTH_DB:-$RUN_DIR/auth}" nohup java -jar "$jar" > "$LOG_DIR/$service.log" 2>&1 < /dev/null 9>&- &
+    # Maven substitui os jars em target; a JVM ainda carrega classes sob demanda.
+    # Execute uma cópia estável para que recompilações não corrompam o processo ativo.
+    mkdir -p "$RUN_DIR/artifacts"
+    local runtime_jar="$RUN_DIR/artifacts/$service.jar"
+    cp "$jar" "$runtime_jar"
+    POIESIS_AUTH_DB="${POIESIS_AUTH_DB:-$RUN_DIR/auth}" nohup java -jar "$runtime_jar" > "$LOG_DIR/$service.log" 2>&1 < /dev/null 9>&- &
     local pid=$!
     printf '%s\n' "$pid" > "$pid_file"
 
@@ -191,10 +200,8 @@ for service in "${SERVICES[@]}"; do
     fi
 done
 
-for service in "${SERVICES[@]}"; do
-    printf '\n=== Compilando e instalando %s ===\n' "$service"
-    mvn -f "$ROOT/$service/pom.xml" -DskipTests clean install
-done
+printf '\n=== Compilando e instalando o backend completo ===\n'
+mvn -f "$ROOT/pom.xml" -DskipTests clean install
 
 trap 'trap - ERR INT TERM; stop_services || true; exit 1' ERR INT TERM
 printf '\n=== Iniciando os microsserviços ===\n'

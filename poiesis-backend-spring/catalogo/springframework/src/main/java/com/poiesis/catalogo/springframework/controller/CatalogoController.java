@@ -34,6 +34,12 @@ public class CatalogoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(catalogoMapper.toDTO(salvo));
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ProdutoResponseDTO> atualizar(@PathVariable Long id, @RequestBody ProdutoRequestDTO dto) {
+        return ResponseEntity.ok(catalogoMapper.toDTO(catalogoService.atualizarProduto(id, catalogoMapper.toDomain(dto))));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProdutoResponseDTO> buscarPorId(@PathVariable Long id) {
         Produto produto = catalogoService.buscarPorId(id);

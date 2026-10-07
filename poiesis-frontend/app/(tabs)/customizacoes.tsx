@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import api from '../../src/services/api';
@@ -31,8 +32,10 @@ export default function Customizacoes() {
         }
     }, []);
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         let ativo = true;
+        setCarregando(true);
+        setErro('');
         async function buscarOpcoes() {
             try {
                 const { data: produtos } = await api.get<Produto[]>('/v1/produtos');
@@ -42,6 +45,7 @@ export default function Customizacoes() {
                 }));
                 if (ativo) setDados(resultados);
             } catch (error: any) {
+                if (ativo) setDados([]);
                 if (ativo) setErro(error?.response?.status === 401 ? 'Sua sessão expirou. Entre novamente.' :
                     error?.response?.status === 403 ? 'Entre em uma conta para consultar as opções.' :
                         error?.response?.data?.message ?? 'Não foi possível carregar as opções de customização.');
@@ -51,7 +55,7 @@ export default function Customizacoes() {
         }
         void buscarOpcoes();
         return () => { ativo = false; };
-    }, []);
+    }, []));
 
     const total = dados.reduce((quantidade, item) => quantidade + item.opcoes.length, 0);
 

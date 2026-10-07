@@ -53,7 +53,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UsuarioResponseDTO> registrar(@RequestBody RegisterRequestDTO requestDTO) {
+    public ResponseEntity<UsuarioResponseDTO> registrar(@jakarta.validation.Valid @RequestBody RegisterRequestDTO requestDTO) {
+        requestDTO.setNome(requestDTO.getNome().trim());
+        requestDTO.setEmail(requestDTO.getEmail().trim());
         // Criptografa a senha antes de salvar no domínio
         String senhaCriptografada = passwordEncoder.encode(requestDTO.getSenha());
         requestDTO.setSenha(senhaCriptografada);

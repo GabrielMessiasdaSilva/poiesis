@@ -8,7 +8,10 @@ function RootNavigator() {
     if (loading) return <View style={styles.loading}><ActivityIndicator color="#334B35" /></View>;
     return (
         <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Protected guard={!signed}><Stack.Screen name="(auth)/login" /></Stack.Protected>
+            <Stack.Protected guard={!signed}>
+                <Stack.Screen name="(auth)/login" />
+                <Stack.Screen name="(auth)/cadastro" />
+            </Stack.Protected>
             <Stack.Protected guard={signed}><Stack.Screen name="(tabs)" /></Stack.Protected>
         </Stack>
     );

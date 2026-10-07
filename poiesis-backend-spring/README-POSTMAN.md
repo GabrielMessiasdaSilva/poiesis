@@ -258,3 +258,38 @@ O teste define `checks: rate==1`; portanto, ele termina com falha se qualquer re
 ## Sessão e relatórios atualizados
 
 Consulte [ANALISE-ENDPOINTS-E-AUTENTICACAO.md](ANALISE-ENDPOINTS-E-AUTENTICACAO.md) para origem dos relatórios, novos endpoints de sessão/logout, revogação persistente e regras de perfil.
+
+## Build Maven de todos os serviços
+
+O POM da raiz agrega os sete serviços. Cada serviço de negócio herda `spring-boot-starter-parent:4.1.1` e possui Java 21, metadados próprios e os módulos `domain` / `springframework`. O diretório `springframework` contém o módulo Spring indicado no modelo de arquitetura. O gateway é uma aplicação Spring única.
+
+Os artefatos são exclusivos por serviço: `login-domain` / `login-spring`, `catalogo-domain` / `catalogo-spring` etc. Isso evita sobrescrever módulos de outro serviço no repositório Maven local. Os módulos de domínio não declaram dependências do Spring; somente os módulos de API ativam o plugin de empacotamento executável. O parent gerencia versões e configurações de plugins, conforme a [documentação do Spring Boot](https://docs.spring.io/spring-boot/maven-plugin/using.html).
+
+```bash
+# Dentro de poiesis-backend-spring:
+mvn clean install
+python3 tests/auth_endpoints_smoke.py
+
+# Ou apenas um microsserviço:
+mvn -f login/pom.xml clean install
+```
+
+O script `iniciar-projeto.sh` compila o agregador e usa os novos jars `<servico>-spring-0.0.1-SNAPSHOT.jar`. O smoke inicia os sete serviços em portas isoladas e preserva os processos existentes.
+
+Cadastro público: `POST /v1/auth/register` exige nome, e-mail válido e senha com 8 a 72 caracteres. Retorna `201` no sucesso, `400` para dados inválidos e `409` para e-mail já cadastrado. O frontend oferece a tela de cadastro e o retorno ao login.
+
+### Verificar customizações com k6
+
+```bash
+k6 run multi_request/teste-customizacao.js
+```
+
+O teste cria um produto temporário e valida criação, edição com o mesmo ID,
+consulta e inativação de opções com 10 usuários concorrentes. Aceita `BASE_URL`,
+`ADMIN_EMAIL`, `ADMIN_PASSWORD`, `VUS` e `ITERATIONS`, como o teste de pedidos.
+Exige 100% dos checks e nenhuma falha HTTP.
+
+O script de inicialização executa cópias dos JARs em `.run-local/artifacts`,
+para evitar erros de classes ausentes quando Maven substitui os arquivos em
+`target` durante uma recompilação. Para aplicar novas versões, pare os serviços
+antes de iniciar novamente; recompilar não atualiza uma JVM que já está rodando.

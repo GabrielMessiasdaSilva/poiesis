@@ -41,6 +41,14 @@ public class CustomizacaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
+    public ResponseEntity<CustomizacaoResponseDTO> atualizar(@PathVariable Long id, @Valid @RequestBody CustomizacaoRequestDTO dto) {
+        catalogoFeignClient.buscarProdutoPorId(dto.produtoId());
+        return ResponseEntity.ok(CustomizacaoMapper.toResponse(domainService.atualizarOpcao(id, CustomizacaoMapper.toDomain(dto))));
+    }
+
     @GetMapping("/produto/{produtoId}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<List<CustomizacaoResponseDTO>> listarPorProduto(@PathVariable Long produtoId) {

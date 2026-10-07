@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React, { useState, useContext } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -88,6 +89,7 @@ export default function Login() {
                         </>}
                     </Pressable>
 
+                    <Link href="/(auth)/cadastro" style={styles.signupLink}>Ainda não tem uma conta? Cadastre-se</Link>
                     <View style={styles.demoNote}>
                         <View style={styles.demoDot} />
                         <Text style={styles.demoText}>ACESSO SEGURO PELO SERVIDOR POIESIS</Text>
@@ -125,6 +127,7 @@ const styles = StyleSheet.create({
     input: { flex: 1, minHeight: 50, color: '#202522', fontSize: 14 },
     button: { minHeight: 52, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 17, backgroundColor: '#D7F36A', borderRadius: 4, marginTop: 23 },
     buttonText: { color: '#202522', fontSize: 14, fontWeight: '900' },
+    signupLink: { color: '#334B35', fontSize: 13, fontWeight: '700', textAlign: 'center', paddingTop: 20 },
     demoNote: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 20 },
     demoDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: '#85A866' },
     demoText: { color: '#667068', fontSize: 9, fontWeight: '800', letterSpacing: 1 },

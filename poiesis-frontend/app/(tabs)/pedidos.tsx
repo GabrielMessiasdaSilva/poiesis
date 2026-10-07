@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import api from '../../src/services/api';
 
@@ -40,8 +41,10 @@ export default function Pedidos() {
         }
     }, []);
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         let ativo = true;
+        setCarregando(true);
+        setErro('');
         api.get<Pedido[]>('/v1/pedidos')
             .then(({ data }) => { if (ativo) setPedidos(data); })
             .catch((error: any) => {
@@ -51,7 +54,7 @@ export default function Pedidos() {
             })
             .finally(() => { if (ativo) setCarregando(false); });
         return () => { ativo = false; };
-    }, []);
+    }, []));
 
     const emAndamento = pedidos.filter((pedido) => pedido.status === 'CRIADO' || pedido.status === 'EM_PROCESSAMENTO').length;
     const finalizados = pedidos.filter((pedido) => pedido.status === 'FINALIZADO').length;

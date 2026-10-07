@@ -1,8 +1,15 @@
 package com.poiesis.login.springframework.controller.dto.request;
 
 public class RegisterRequestDTO {
+    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.Size(max = 100)
     private String nome;
+    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.Email
+    @jakarta.validation.constraints.Size(max = 254)
     private String email;
+    @jakarta.validation.constraints.NotBlank
+    @jakarta.validation.constraints.Size(min = 8, max = 72)
     private String senha;
 
     public RegisterRequestDTO() {}

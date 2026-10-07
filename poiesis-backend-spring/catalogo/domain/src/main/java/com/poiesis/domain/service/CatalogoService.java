@@ -15,10 +15,19 @@ public class CatalogoService {
     }
 
     public Produto cadastrarProduto(Produto produto) {
+        if (produto.getNome() == null || produto.getNome().isBlank() || produto.getCategoria() == null) {
+            throw new IllegalArgumentException("Nome e categoria são obrigatórios.");
+        }
         if (produto.getPrecoBase() == null || produto.getPrecoBase().doubleValue() <= 0) {
             throw new IllegalArgumentException("O preço base do produto deve ser maior que zero.");
         }
         return produtoRepository.salvar(produto);
+    }
+
+    public Produto atualizarProduto(Long id, Produto dados) {
+        Produto atual = buscarPorId(id);
+        return cadastrarProduto(new Produto(id, dados.getNome(), dados.getDescricao(),
+                dados.getPrecoBase(), dados.getCategoria(), atual.getAtivo()));
     }
 
     public Produto buscarPorId(Long id) {
