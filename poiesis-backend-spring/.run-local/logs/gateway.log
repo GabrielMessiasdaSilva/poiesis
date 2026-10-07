@@ -1,0 +1,23 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-07T09:03:39.067-03:00  INFO 8896 --- [api-gateway] [           main] com.poiesis.gateway.GatewayApplication   : Starting GatewayApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 8896 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/gateway/target/gateway-0.0.1-SNAPSHOT.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
+2026-10-07T09:03:39.076-03:00  INFO 8896 --- [api-gateway] [           main] com.poiesis.gateway.GatewayApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-10-07T09:03:41.200-03:00  INFO 8896 --- [api-gateway] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2cb1f36a-235a-3143-af2d-f709918ce692
+2026-10-07T09:03:41.761-03:00  INFO 8896 --- [api-gateway] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-07T09:03:41.786-03:00  INFO 8896 --- [api-gateway] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-07T09:03:41.787-03:00  INFO 8896 --- [api-gateway] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-07T09:03:41.827-03:00  INFO 8896 --- [api-gateway] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2508 ms
+2026-10-07T09:03:43.708-03:00  WARN 8896 --- [api-gateway] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-07T09:03:43.764-03:00  INFO 8896 --- [api-gateway] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-07T09:03:43.796-03:00  INFO 8896 --- [api-gateway] [           main] com.poiesis.gateway.GatewayApplication   : Started GatewayApplication in 5.637 seconds (process running for 6.961)
+2026-10-07T09:04:06.922-03:00  INFO 8896 --- [api-gateway] [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-07T09:04:06.923-03:00  INFO 8896 --- [api-gateway] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-07T09:04:06.928-03:00  INFO 8896 --- [api-gateway] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms

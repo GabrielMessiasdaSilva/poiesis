@@ -23,7 +23,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Usuario usuario = usuarioDomainService.buscarPorEmail(email);
+        Usuario usuario;
+        try { usuario = usuarioDomainService.buscarPorEmail(email); }
+        catch (RuntimeException e) { throw new UsernameNotFoundException("Usuário não encontrado.", e); }
 
         List<SimpleGrantedAuthority> authorities = usuario.getRoles()
                 .stream()

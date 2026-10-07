@@ -25,15 +25,31 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final com.poiesis.login.springframework.security.TokenSessions sessions;
 
     public AuthController(UsuarioDomainService usuarioDomainService,
                           PasswordEncoder passwordEncoder,
                           AuthenticationManager authenticationManager,
-                          JwtService jwtService) {
+                          JwtService jwtService, com.poiesis.login.springframework.security.TokenSessions sessions) {
         this.usuarioDomainService = usuarioDomainService;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
+        this.sessions = sessions;
+    }
+
+    @GetMapping("/session")
+    public java.util.Map<String, Object> session(
+            @org.springframework.security.core.annotation.AuthenticationPrincipal org.springframework.security.oauth2.jwt.Jwt jwt) {
+        return java.util.Map.of("email", jwt.getSubject(), "roles", jwt.getClaimAsStringList("roles"),
+                "expiresAt", jwt.getExpiresAt().toEpochMilli());
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            @org.springframework.security.core.annotation.AuthenticationPrincipal org.springframework.security.oauth2.jwt.Jwt jwt) {
+        sessions.revoke(jwt);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/register")

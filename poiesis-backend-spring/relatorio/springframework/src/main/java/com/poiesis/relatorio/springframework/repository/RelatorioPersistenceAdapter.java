@@ -12,9 +12,16 @@ import java.time.LocalDate;
 public class RelatorioPersistenceAdapter implements RelatorioRepository {
 
     private final SpringDataRelatorioRepository repository;
+    private final org.springframework.web.client.RestClient producao;
 
-    public RelatorioPersistenceAdapter(SpringDataRelatorioRepository repository) {
+    public RelatorioPersistenceAdapter(SpringDataRelatorioRepository repository, org.springframework.core.env.Environment env) {
         this.repository = repository;
+        var factory = new org.springframework.http.client.SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(2000);
+        factory.setReadTimeout(5000);
+        producao = org.springframework.web.client.RestClient.builder()
+                .baseUrl(env.getProperty("application.producao.url", "http://localhost:8085"))
+                .requestFactory(factory).build();
     }
 
     @Override
@@ -30,7 +37,16 @@ public class RelatorioPersistenceAdapter implements RelatorioRepository {
 
     @Override
     public RelatorioProducao obterRelatorioProducao() {
-        // Exemplo consolidado (pode consultar visão do banco local ou caches pré-computados)
-        return new RelatorioProducao(10L, 5L, 8L, 3L, 42L);
+        var auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        var jwt = (org.springframework.security.oauth2.jwt.Jwt) auth.getPrincipal();
+        try {
+            var result = producao.get().uri("/v1/producao/resumo").headers(h -> h.setBearerAuth(jwt.getTokenValue()))
+                    .retrieve().body(RelatorioProducao.class);
+            if (result == null) throw new IllegalStateException("Resposta vazia da produção");
+            return result;
+        } catch (org.springframework.web.client.RestClientException | IllegalStateException e) {
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.SERVICE_UNAVAILABLE,
+                    "Não foi possível consultar os dados de produção.", e);
+        }
     }
 }

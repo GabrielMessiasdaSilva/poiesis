@@ -7,3 +7,5 @@ As roles são armazenadas na tabela `tb_usuario_roles` como `USER` ou `ADMIN`. O
 Use `Authorization: Bearer <token>` nas rotas protegidas. Execute a aplicação `SpringframeworkApplication` pelo IntelliJ. A porta padrão do login é `8081`.
 
 O segredo HMAC atual é apenas para execução acadêmica local; substitua-o se o serviço for usado em outro ambiente.
+
+`GET /v1/auth/session` valida a sessão e retorna e-mail, perfis e expiração. `POST /v1/auth/logout` revoga o token no banco; gateway e todos os serviços consultam o login para rejeitar a reutilização. Usuários e revogações são persistidos em H2 em arquivo (`POIESIS_AUTH_DB`), inclusive após reinício. Veja [a análise completa](../ANALISE-ENDPOINTS-E-AUTENTICACAO.md).

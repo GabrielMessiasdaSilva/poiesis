@@ -36,6 +36,7 @@ public class JwtService {
         long expiration = environment.getRequiredProperty("application.jwt.expiration", Long.class);
 
         return Jwts.builder()
+                .setId(java.util.UUID.randomUUID().toString())
                 .setSubject(userDetails.getUsername())
                 .claim("roles", roles)
                 .setIssuedAt(new Date())

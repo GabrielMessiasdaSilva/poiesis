@@ -20,7 +20,9 @@ O script compila os sete módulos e inicia os serviços em segundo plano. Acompa
 ./iniciar-projeto.sh parar
 ```
 
-Depois de parar os serviços, aguarde alguns segundos antes de iniciá-los novamente. Se a inicialização falhar, confira se algum processo iniciado pela IDE ou por outra execução ainda está usando as portas e se a conexão CloudAMQP configurada está acessível. O script guarda PID e logs em `.run-local/`.
+O comando de parada localiza os processos pelos JARs deste projeto, mesmo quando os arquivos `.pid` estão ausentes. Ele aguarda até 30 segundos pelo encerramento normal, força a parada dos processos restantes e verifica se as portas foram liberadas. Processos de outras aplicações não são encerrados. Se uma porta continuar ocupada, o comando informa a falha. O script guarda PID e logs em `.run-local/` e usa `flock` (pacote `util-linux`) para impedir execuções simultâneas.
+
+A inicialização executa `clean install` para recompilar os módulos com os nomes dos parâmetros Java preservados, necessários para os controllers Spring. Se a inicialização falhar, confira se algum processo iniciado pela IDE ainda está usando as portas e se a conexão CloudAMQP configurada está acessível.
 
 | Aplicação | Porta |
 |---|---:|
@@ -32,7 +34,7 @@ Depois de parar os serviços, aguarde alguns segundos antes de iniciá-los novam
 | Produção | 8085 |
 | Customização | 8086 |
 
-Faça as requisições pelo gateway: `http://localhost:8080`. No Postman, crie uma variável `baseUrl` com esse valor. Os bancos H2 estão em memória: os dados são reiniciados quando os serviços são reiniciados. Pedido publica eventos no CloudAMQP, consumidos de forma assíncrona por Produção e Relatório.
+Faça as requisições pelo gateway: `http://localhost:8080`. No Postman, crie uma variável `baseUrl` com esse valor. Os bancos H2 dos serviços de negócio estão em memória e seus dados são reiniciados junto com os serviços. O login usa H2 em arquivo para preservar usuários e revogações de tokens. Pedido publica eventos no CloudAMQP, consumidos de forma assíncrona por Produção e Relatório.
 
 ## 2. Autenticar como administrador
 
@@ -158,7 +160,7 @@ GET {{baseUrl}}/v1/pedidos/{{pedidoId}}
 Authorization: Bearer {{tokenAdmin}}
 ```
 
-Consulte as ordens de produção:
+Consulte as ordens de produção (somente administrador):
 
 ```http
 GET {{baseUrl}}/v1/producao
@@ -252,3 +254,7 @@ BASE_URL=http://localhost:8080 ADMIN_EMAIL=admin@poiesis.com ADMIN_PASSWORD=admi
 Confira as métricas `pedidos_criados`, `pedidos_falhos`, `pedidos_persistidos` e a taxa de respostas HTTP no resumo do k6. Se o total persistido for diferente do esperado, investigue os logs do Pedido e a conexão com o RabbitMQ: atualmente, o salvamento do pedido é transacional no banco, mas a publicação da mensagem ocorre depois do commit e não participa da mesma transação. O teste não impõe um limite de latência; use `http_req_duration` do relatório para avaliar o desempenho observado.
 
 O teste define `checks: rate==1`; portanto, ele termina com falha se qualquer requisição, conferência de persistência ou limpeza não passar.
+
+## Sessão e relatórios atualizados
+
+Consulte [ANALISE-ENDPOINTS-E-AUTENTICACAO.md](ANALISE-ENDPOINTS-E-AUTENTICACAO.md) para origem dos relatórios, novos endpoints de sessão/logout, revogação persistente e regras de perfil.

@@ -13,11 +13,11 @@ Atualizado em 2026-10-07.
 
 ## Regras e limites do backend
 
-- O JWT é necessário para pedidos e leitura de opções de customização. O e-mail do cliente é determinado pelo token no backend.
+- O JWT é necessário para pedidos e leitura de opções de customização. A sessão é validada em `/v1/auth/session`, expira automaticamente e respostas `401` autenticadas encerram o acesso; `403` indica falta de permissão. O e-mail do cliente é determinado pelo token no backend.
 - Produtos têm nome, descrição, preço base, categoria e estado ativo. A API não fornece tamanhos ou cores; por isso o app não oferece seletores locais que poderiam sugerir uma disponibilidade inexistente.
 - O endpoint de customizações cadastra/lista opções por produto (por exemplo, uma opção de cor e seu adicional). Ele não salva a peça escolhida pelo cliente e não aceita texto/arte/posição.
 - O pedido atual aceita produto e quantidade, calcula preço com base no catálogo e retorna `CRIADO`, `EM_PROCESSAMENTO`, `FINALIZADO` ou `CANCELADO`. Não existe endpoint para cliente editar ou cancelar pedidos.
-- A API expõe consulta de pedidos do usuário autenticado, então a tela mostra os registros desse usuário. A produção é assíncrona via RabbitMQ e não é necessária para a lista de pedidos.
+- A API lista pedidos próprios para `USER` e todos os pedidos para `ADMIN`. A produção é assíncrona via RabbitMQ e não é necessária para a lista de pedidos.
 
 ## Execução para validação
 
@@ -26,4 +26,11 @@ Atualizado em 2026-10-07.
 3. Use um usuário existente. O administrador local documentado pelo backend é `admin@poiesis.com` / `admin123`; também é possível cadastrar usuário `USER` pelo endpoint `POST /v1/auth/register` documentado no backend.
 4. Valide catálogo, lista de opções, criação do pedido e atualização da aba Pedidos.
 
-O backend usa H2 em memória; reiniciar seus serviços limpa os registros locais. Consulte o README do backend para limitações de RabbitMQ e permissões.
+Os serviços de negócio usam H2 em memória; reiniciar esses serviços limpa os registros locais. O login usa H2 em arquivo para preservar usuários e revogação de tokens. Consulte o README do backend para limitações de RabbitMQ e permissões.
+
+## Sessão, logout e perfis
+
+- A aba Conta exibe o e-mail/perfil e permite sair. Logout limpa o estado e o armazenamento, solicita revogação no servidor e retorna ao login pelas rotas protegidas.
+- O perfil vem da resposta autenticada de `/v1/auth/session`. A aba Administração existe somente para `ADMIN` e consulta vendas por período e o resumo atual de produção. As APIs também validam o perfil.
+- Rotas protegidas do Expo Router bloqueiam URL direta e histórico após logout. Foco, retorno à página e retomada do app revalidam a sessão; o temporizador trata expiração sem precisar aguardar uma chamada à API.
+- Vendas representam pedidos criados recebidos por RabbitMQ; produção agora usa contagens reais do banco de produção. Consulte [a análise do backend](../poiesis-backend-spring/ANALISE-ENDPOINTS-E-AUTENTICACAO.md) para origem, persistência e limitações.

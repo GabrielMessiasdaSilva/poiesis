@@ -21,7 +21,7 @@ public class PedidoProducer implements NotificacaoEventPort {
 
     @Override
     public void notificarPedidoCriado(Pedido pedido) {
-        PedidoCriadoEvent event = new PedidoCriadoEvent(pedido.getId(), pedido.getClienteEmail(), pedido.getValorTotal());
+        PedidoCriadoEvent event = new PedidoCriadoEvent(pedido.getId(), pedido.getClienteEmail(), pedido.getValorTotal(), pedido.getDataCriacao());
         rabbitTemplate.convertAndSend(exchange, routingKey, event);
     }
 }
