@@ -6,7 +6,7 @@ import api from '../../src/services/api';
 
 type Pedido = {
     id: number;
-    itens: { produtoId: number; nomeProduto: string; quantidade: number; precoUnitario: number; subtotal: number }[];
+    itens: { produtoId: number; nomeProduto: string; quantidade: number; precoUnitario: number; subtotal: number; customizacoes?: { id: number; tipo: string; nome: string; precoAdicional: number }[] }[];
     valorTotal: number;
     status: 'CRIADO' | 'EM_PROCESSAMENTO' | 'FINALIZADO' | 'CANCELADO';
     dataCriacao: string;
@@ -80,7 +80,12 @@ export default function Pedidos() {
                     {item.itens.map((linha, index) => (
                         <View key={`${linha.produtoId}-${index}`} style={styles.itemRow}>
                             <Feather name="package" size={17} color="#718264" />
-                            <Text style={styles.productName}>{linha.nomeProduto}</Text>
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.productName}>{linha.nomeProduto}</Text>
+                                {linha.customizacoes?.map(opcao => <Text key={opcao.id} style={styles.customizacao}>
+                                    {opcao.tipo} · {opcao.nome} (+ R$ {Number(opcao.precoAdicional).toFixed(2).replace('.', ',')} por unidade)
+                                </Text>)}
+                            </View>
                             <Text style={styles.quantity}>× {linha.quantidade}</Text>
                         </View>
                     ))}
@@ -144,7 +149,8 @@ const styles = StyleSheet.create({
     statusDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#456B43' },
     statusText: { color: '#456B43', fontSize: 9, fontWeight: '800' },
     itemRow: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12, borderTopWidth: 1, borderTopColor: '#EEF0ED' },
-    productName: { flex: 1, color: '#202522', fontSize: 13, fontWeight: '700' },
+    productName: { color: '#202522', fontSize: 13, fontWeight: '700' },
+    customizacao: { color: '#667068', fontSize: 11, lineHeight: 17, marginTop: 3 },
     quantity: { color: '#667068', fontSize: 12, fontWeight: '700' },
     totalRow: { flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: '#EEF0ED', paddingTop: 12, marginTop: 2 },
     totalLabel: { color: '#89918A', fontSize: 9, fontWeight: '800', letterSpacing: 0.6 },

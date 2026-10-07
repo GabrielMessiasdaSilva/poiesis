@@ -15,8 +15,9 @@ public class BeanConfig {
     public CriarPedidoUseCase criarPedidoUseCase(
             PedidoRepositoryPort pedidoRepositoryPort,
             CatalogoServicePort catalogoServicePort,
-            NotificacaoEventPort notificacaoEventPort) {
-        return new CriarPedidoUseCase(pedidoRepositoryPort, catalogoServicePort, notificacaoEventPort);
+            NotificacaoEventPort notificacaoEventPort,
+            com.poiesis.pedido.domain.port.CustomizacaoServicePort customizacaoServicePort) {
+        return new CriarPedidoUseCase(pedidoRepositoryPort, catalogoServicePort, notificacaoEventPort, customizacaoServicePort);
     }
 
     @Bean

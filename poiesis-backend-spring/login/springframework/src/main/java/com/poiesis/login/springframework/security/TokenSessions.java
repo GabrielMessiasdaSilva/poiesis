@@ -14,6 +14,7 @@ public class TokenSessions {
     public void revoke(Jwt jwt) {
         repository.save(new RevokedTokenEntity(hash(jwt.getTokenValue()), jwt.getExpiresAt()));
     }
+    // Guarda apenas a impressão SHA-256 do token revogado, sem persistir o JWT completo.
     private String hash(String token) {
         try { return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256")
             .digest(token.getBytes(StandardCharsets.UTF_8))); }

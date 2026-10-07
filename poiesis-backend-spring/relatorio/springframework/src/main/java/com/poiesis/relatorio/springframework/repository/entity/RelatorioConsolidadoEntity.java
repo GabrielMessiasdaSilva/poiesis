@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
+// A unicidade por pedido impede registros duplicados, inclusive em inserções concorrentes.
 @Table(name = "tb_relatorio_consolidado", uniqueConstraints = @UniqueConstraint(name = "uk_relatorio_pedido", columnNames = "pedido_id"))
 public class RelatorioConsolidadoEntity {
 
@@ -12,6 +13,7 @@ public class RelatorioConsolidadoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Controle otimista: o JPA detecta versões divergentes ao atualizar a mesma entidade.
     @Version
     private Long version;
 

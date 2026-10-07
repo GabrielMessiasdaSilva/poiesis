@@ -8,6 +8,10 @@ public class ItemPedidoResponseDTO {
     private Integer quantidade;
     private BigDecimal precoUnitario;
     private BigDecimal subtotal;
+    private java.util.List<com.poiesis.pedido.domain.entity.CustomizacaoEscolhida> customizacoes = java.util.List.of();
+
+    public java.util.List<com.poiesis.pedido.domain.entity.CustomizacaoEscolhida> getCustomizacoes() { return customizacoes; }
+    public void setCustomizacoes(java.util.List<com.poiesis.pedido.domain.entity.CustomizacaoEscolhida> opcoes) { customizacoes = opcoes; }
 
     public ItemPedidoResponseDTO() {}
 

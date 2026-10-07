@@ -19,7 +19,9 @@ public class PedidoMapper {
     // --- Mapeamentos do DTO de Request para Domínio ---
     public ItemPedido toDomainItem(ItemPedidoRequestDTO dto) {
         if (dto == null) return null;
-        return new ItemPedido(dto.getProdutoId(), null, dto.getQuantidade(), null);
+        var item = new ItemPedido(dto.getProdutoId(), null, dto.getQuantidade(), null);
+        item.setCustomizacaoIds(dto.getCustomizacaoIds());
+        return item;
     }
 
     public List<ItemPedido> toDomainItemList(List<ItemPedidoRequestDTO> dtos) {
@@ -30,13 +32,15 @@ public class PedidoMapper {
     // --- Mapeamentos do Domínio para DTO de Response ---
     public ItemPedidoResponseDTO toResponseItemDTO(ItemPedido item) {
         if (item == null) return null;
-        return new ItemPedidoResponseDTO(
+        var response = new ItemPedidoResponseDTO(
                 item.getProdutoId(),
                 item.getNomeProduto(),
                 item.getQuantidade(),
                 item.getPrecoUnitario(),
                 item.getSubtotal()
         );
+        response.setCustomizacoes(item.getCustomizacoes());
+        return response;
     }
 
     public PedidoResponseDTO toResponseDTO(Pedido pedido) {
@@ -57,12 +61,15 @@ public class PedidoMapper {
     // --- Mapeamentos do Domínio para Entidade JPA ---
     public ItemPedidoEntity toEntityItem(ItemPedido item) {
         if (item == null) return null;
-        return new ItemPedidoEntity(
+        var entity = new ItemPedidoEntity(
                 item.getProdutoId(),
                 item.getNomeProduto(),
                 item.getQuantidade(),
                 item.getPrecoUnitario()
         );
+        entity.setCustomizacoes(item.getCustomizacoes().stream()
+                .map(com.poiesis.pedido.springframework.repository.entity.CustomizacaoEscolhidaEntity::new).toList());
+        return entity;
     }
 
     public PedidoEntity toEntity(Pedido pedido) {
@@ -83,12 +90,15 @@ public class PedidoMapper {
     // --- Mapeamentos da Entidade JPA para Domínio ---
     public ItemPedido toDomainItem(ItemPedidoEntity entity) {
         if (entity == null) return null;
-        return new ItemPedido(
+        var item = new ItemPedido(
                 entity.getProdutoId(),
                 entity.getNomeProduto(),
                 entity.getQuantidade(),
                 entity.getPrecoUnitario()
         );
+        item.setCustomizacoes(entity.getCustomizacoes().stream()
+                .map(com.poiesis.pedido.springframework.repository.entity.CustomizacaoEscolhidaEntity::toDomain).toList());
+        return item;
     }
 
     public Pedido toDomain(PedidoEntity entity) {

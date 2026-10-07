@@ -16,6 +16,7 @@ public class PedidoConsumer {
         this.producaoService = producaoService;
     }
 
+    // O evento inicia a produção de forma assíncrona, sem uma chamada HTTP do pedido.
     @RabbitListener(queues = RabbitMQConfig.PEDIDO_CRIADO_QUEUE)
     public void receberPedidoCriado(PedidoCriadoEvent event) {
         producaoService.iniciarProducao(event.pedidoId(), event.clienteEmail());

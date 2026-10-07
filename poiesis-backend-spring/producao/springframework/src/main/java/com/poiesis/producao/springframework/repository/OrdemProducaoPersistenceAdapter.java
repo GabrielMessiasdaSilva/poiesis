@@ -29,6 +29,7 @@ public class OrdemProducaoPersistenceAdapter implements OrdemProducaoRepository 
         if (ordemProducao.getId() == null) {
             entity = mapper.toEntity(ordemProducao);
         } else {
+            // Carrega a entidade gerenciada para preservar a versão usada pelo JPA na atualização.
             entity = repository.findById(ordemProducao.getId())
                     .orElseThrow(() -> new IllegalArgumentException(
                             "Ordem de produção não encontrada ID: " + ordemProducao.getId()));

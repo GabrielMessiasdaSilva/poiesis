@@ -12,6 +12,8 @@ type Produto = {
     categoria: string;
 };
 
+type Opcao = { id: number; produtoId: number; tipo: string; nome: string; precoAdicional: number; ativo: boolean };
+
 function mensagemErro(error: any) {
     if (error?.response?.status === 401) return 'Sua sessão expirou. Entre novamente.';
     if (error?.response?.status === 403) return 'Sua conta não tem permissão para essa operação.';
@@ -22,11 +24,37 @@ function CartaoProduto({ produto }: { produto: Produto }) {
     const [enviando, setEnviando] = useState(false);
     const [mensagem, setMensagem] = useState('');
     const [criado, setCriado] = useState(false);
+    const [opcoes, setOpcoes] = useState<Opcao[]>([]);
+    const [selecionadas, setSelecionadas] = useState<number[]>([]);
+    const [personalizando, setPersonalizando] = useState(false);
+    const [carregandoOpcoes, setCarregandoOpcoes] = useState(false);
+    const [erroOpcoes, setErroOpcoes] = useState('');
+    const preco = Number(produto.precoBase) + opcoes.filter(o => selecionadas.includes(o.id))
+        .reduce((total, o) => total + Number(o.precoAdicional), 0);
+
+    async function personalizar() {
+        setPersonalizando(true); setCarregandoOpcoes(true); setErroOpcoes('');
+        setSelecionadas([]); setMensagem(''); setCriado(false);
+        try {
+            const { data } = await api.get<Opcao[]>(`/v1/customizacoes/produto/${produto.id}`);
+            setOpcoes(data.filter(o => o.ativo));
+        } catch (error) {
+            setOpcoes([]); setErroOpcoes(mensagemErro(error));
+        } finally {
+            setCarregandoOpcoes(false);
+        }
+    }
+
+    function selecionar(opcao: Opcao) {
+        setMensagem(''); setCriado(false);
+        setSelecionadas(ids => ids.includes(opcao.id) ? ids.filter(id => id !== opcao.id)
+            : [...ids.filter(id => opcoes.find(o => o.id === id)?.tipo.trim().toUpperCase() !== opcao.tipo.trim().toUpperCase()), opcao.id]);
+    }
     async function pedir() {
         setEnviando(true);
         setMensagem(''); setCriado(false);
         try {
-            await api.post('/v1/pedidos', { itens: [{ produtoId: produto.id, quantidade: 1 }] });
+            await api.post('/v1/pedidos', { itens: [{ produtoId: produto.id, quantidade: 1, customizacaoIds: selecionadas }] });
             setCriado(true);
             setMensagem('Pedido criado. Acompanhe o status na aba Pedidos.');
         } catch (error) {
@@ -46,12 +74,32 @@ function CartaoProduto({ produto }: { produto: Produto }) {
                     <Text style={styles.productIndex}>PRODUTO {String(produto.id).padStart(2, '0')}</Text>
                     <Text style={styles.productName}>{produto.nome}</Text>
                     <Text style={styles.productDescription}>{produto.descricao || produto.categoria}</Text>
-                    <Text style={styles.price}>R$ {Number(produto.precoBase).toFixed(2).replace('.', ',')}</Text>
+                    <Text style={styles.price}>R$ {preco.toFixed(2).replace('.', ',')}</Text>
                 </View>
             </View>
-            <Pressable accessibilityRole="button" disabled={enviando} style={[styles.button, enviando && styles.buttonDisabled]} onPress={pedir}>
+            <Pressable accessibilityRole="button" disabled={enviando || carregandoOpcoes} onPress={() => {
+                if (personalizando) { setPersonalizando(false); setSelecionadas([]); setErroOpcoes(''); setMensagem(''); setCriado(false); }
+                else void personalizar();
+            }} style={styles.customButton}>
+                <Text style={styles.customLabel}>{personalizando ? 'Voltar à peça sem customização' : 'Escolher customizações'}</Text>
+            </Pressable>
+            {personalizando && <View style={styles.options}>
+                <Text style={styles.optionHint}>Escolha uma opção por tipo. Toque novamente para remover.</Text>
+                {carregandoOpcoes ? <ActivityIndicator color="#324B32" /> : erroOpcoes ? <>
+                    <Text accessibilityRole="alert" style={styles.optionError}>{erroOpcoes}</Text>
+                    <Pressable onPress={() => void personalizar()}><Text style={styles.customLabel}>Tentar novamente</Text></Pressable>
+                </> : opcoes.length === 0 ? <Text style={styles.optionHint}>Esta peça ainda não tem opções de customização.</Text> : opcoes.map(opcao => (
+                    <Pressable key={opcao.id} accessibilityRole="checkbox" accessibilityState={{ checked: selecionadas.includes(opcao.id), disabled: enviando }}
+                        disabled={enviando} onPress={() => selecionar(opcao)} style={[styles.option, selecionadas.includes(opcao.id) && styles.optionSelected]}>
+                        <Feather name={selecionadas.includes(opcao.id) ? 'check-square' : 'square'} size={18} color="#324B32" />
+                        <Text style={styles.optionName}>{opcao.tipo} · {opcao.nome}</Text>
+                        <Text style={styles.customLabel}>+ R$ {Number(opcao.precoAdicional).toFixed(2).replace('.', ',')}</Text>
+                    </Pressable>
+                ))}
+            </View>}
+            <Pressable accessibilityRole="button" disabled={enviando || carregandoOpcoes || Boolean(erroOpcoes)} style={[styles.button, (enviando || carregandoOpcoes || Boolean(erroOpcoes)) && styles.buttonDisabled]} onPress={pedir}>
                 {enviando ? <ActivityIndicator color="#FFFFFF" /> : <>
-                    <Text style={styles.buttonText}>Pedir esta peça · 1 unidade</Text>
+                    <Text style={styles.buttonText}>Pedir 1 unidade · R$ {preco.toFixed(2).replace('.', ',')}</Text>
                     <Feather name="arrow-right" size={17} color="#FFFFFF" />
                 </>}
             </Pressable>
@@ -138,6 +186,14 @@ const styles = StyleSheet.create({
     productDescription: { color: '#667068', fontSize: 11, lineHeight: 16, marginTop: 4 },
     price: { color: '#324B32', fontSize: 13, fontWeight: '900', marginTop: 5 },
     button: { minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 13, marginTop: 4, borderRadius: 4, backgroundColor: '#202522' },
+    customButton: { minHeight: 44, justifyContent: 'center' },
+    customLabel: { color: '#324B32', fontSize: 12, fontWeight: '700' },
+    options: { gap: 8, marginBottom: 12 },
+    optionHint: { color: '#667068', fontSize: 12, lineHeight: 18 },
+    optionError: { color: '#9B3030', fontSize: 12 },
+    option: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 44, padding: 8, borderWidth: 1, borderColor: '#E2E6E1', borderRadius: 4 },
+    optionSelected: { backgroundColor: '#E5EDE1', borderColor: '#456B43' },
+    optionName: { flex: 1, color: '#202522', fontSize: 12 },
     buttonDisabled: { opacity: 0.65 },
     buttonText: { color: '#FFFFFF', fontSize: 12, fontWeight: '800' },
     separator: { height: 12 },

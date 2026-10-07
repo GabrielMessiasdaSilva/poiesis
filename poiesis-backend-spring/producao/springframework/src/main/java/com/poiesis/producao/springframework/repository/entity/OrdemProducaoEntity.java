@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+// A unicidade por pedido impede registros duplicados, inclusive em inserções concorrentes.
 @Table(name = "tb_ordem_producao", uniqueConstraints = @UniqueConstraint(name = "uk_ordem_pedido", columnNames = "pedido_id"))
 public class OrdemProducaoEntity {
 
@@ -13,6 +14,7 @@ public class OrdemProducaoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Controle otimista: o JPA detecta versões divergentes ao atualizar a mesma entidade.
     @Version
     private Long version;
 

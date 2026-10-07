@@ -12,6 +12,7 @@ public class ProdutoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Controle otimista: o JPA detecta versões divergentes ao atualizar a mesma entidade.
     @Version
     private Long version;
 

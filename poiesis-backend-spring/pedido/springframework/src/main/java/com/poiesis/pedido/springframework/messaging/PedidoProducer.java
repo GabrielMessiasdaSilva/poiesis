@@ -22,6 +22,7 @@ public class PedidoProducer implements NotificacaoEventPort {
     @Override
     public void notificarPedidoCriado(Pedido pedido) {
         PedidoCriadoEvent event = new PedidoCriadoEvent(pedido.getId(), pedido.getClienteEmail(), pedido.getValorTotal(), pedido.getDataCriacao());
+        // Publica no exchange; o RabbitMQ encaminha o evento às filas pela routing key.
         rabbitTemplate.convertAndSend(exchange, routingKey, event);
     }
 }

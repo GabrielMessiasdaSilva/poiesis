@@ -22,6 +22,7 @@ public class RabbitMQConfig {
 
     @Bean
     public JacksonJsonMessageConverter jsonMessageConverter() {
+        // Converte os eventos Java para JSON e vice-versa nas mensagens AMQP.
         return new JacksonJsonMessageConverter();
     }
 }

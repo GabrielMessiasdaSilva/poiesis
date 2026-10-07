@@ -15,6 +15,7 @@ public class CustomizacaoDomainService {
     }
 
     public OpcaoCustomizacao criarOpcao(OpcaoCustomizacao customizacao) {
+        // Só persiste opções com produto, identificação e preço adicional não negativo.
         if (customizacao == null) {
             throw new IllegalArgumentException("A opção de customização é obrigatória.");
         }
@@ -36,6 +37,7 @@ public class CustomizacaoDomainService {
     public OpcaoCustomizacao atualizarOpcao(Long id, OpcaoCustomizacao dados) {
         OpcaoCustomizacao atual = customizacaoRepositoryPort.buscarPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("Customização não encontrada."));
+        // Reaplica as validações de criação e preserva o estado ativo da opção.
         return criarOpcao(new OpcaoCustomizacao(id, dados.produtoId(), dados.tipo(), dados.nome(),
                 dados.precoAdicional(), atual.ativo()));
     }

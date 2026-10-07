@@ -15,6 +15,7 @@ public class CatalogoService {
     }
 
     public Produto cadastrarProduto(Produto produto) {
+        // Um produto precisa de nome, categoria e preço positivo para entrar no catálogo.
         if (produto.getNome() == null || produto.getNome().isBlank() || produto.getCategoria() == null) {
             throw new IllegalArgumentException("Nome e categoria são obrigatórios.");
         }
@@ -45,6 +46,7 @@ public class CatalogoService {
 
     public void inativarProduto(Long id) {
         Produto produto = buscarPorId(id);
+        // Inativa sem excluir o registro, preservando os dados do produto.
         produto.desativar();
         produtoRepository.salvar(produto);
     }

@@ -35,6 +35,7 @@ public class JwtService {
                 .toList();
         long expiration = environment.getRequiredProperty("application.jwt.expiration", Long.class);
 
+        // A assinatura permite verificar a integridade; a expiração limita a validade do acesso.
         return Jwts.builder()
                 .setId(java.util.UUID.randomUUID().toString())
                 .setSubject(userDetails.getUsername())

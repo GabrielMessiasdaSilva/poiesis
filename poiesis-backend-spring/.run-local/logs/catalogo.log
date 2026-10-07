@@ -8,21 +8,21 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-10-07T11:01:00.857-03:00  INFO 22810 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Starting CatalogoApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 22810 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/catalogo/springframework/target/catalogo-spring-0.0.1-SNAPSHOT.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
-2026-10-07T11:01:00.865-03:00  INFO 22810 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : No active profile set, falling back to 1 default profile: "default"
-2026-10-07T11:01:02.861-03:00  INFO 22810 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-07T11:01:03.005-03:00  INFO 22810 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 1 JPA repository interface.
-2026-10-07T11:01:04.687-03:00  INFO 22810 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
-2026-10-07T11:01:04.734-03:00  INFO 22810 --- [catalogo-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-10-07T11:01:04.735-03:00  INFO 22810 --- [catalogo-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-10-07T11:01:04.829-03:00  INFO 22810 --- [catalogo-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3805 ms
-2026-10-07T11:01:05.434-03:00  INFO 22810 --- [catalogo-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-10-07T11:01:05.563-03:00  INFO 22810 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
-2026-10-07T11:01:06.622-03:00  INFO 22810 --- [catalogo-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-07T11:01:06.676-03:00  INFO 22810 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-10-07T11:01:07.047-03:00  INFO 22810 --- [catalogo-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:catalogo user=SA
-2026-10-07T11:01:07.049-03:00  INFO 22810 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-10-07T11:01:07.145-03:00  INFO 22810 --- [catalogo-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-10-07T17:28:51.815-03:00  INFO 13281 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Starting CatalogoApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 13281 (/home/gabriel/Documentos/poiesis/poiesis-backend-spring/.run-local/artifacts/catalogo.jar started by gabriel in /home/gabriel/Documentos/poiesis/poiesis-backend-spring)
+2026-10-07T17:28:51.861-03:00  INFO 13281 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : No active profile set, falling back to 1 default profile: "default"
+2026-10-07T17:29:05.654-03:00  INFO 13281 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-07T17:29:06.539-03:00  INFO 13281 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 764 ms. Found 1 JPA repository interface.
+2026-10-07T17:29:16.648-03:00  INFO 13281 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-10-07T17:29:16.872-03:00  INFO 13281 --- [catalogo-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-07T17:29:16.873-03:00  INFO 13281 --- [catalogo-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-07T17:29:17.261-03:00  INFO 13281 --- [catalogo-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 24498 ms
+2026-10-07T17:29:20.412-03:00  INFO 13281 --- [catalogo-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-07T17:29:21.538-03:00  INFO 13281 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-07T17:29:29.656-03:00  INFO 13281 --- [catalogo-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-07T17:29:30.212-03:00  INFO 13281 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-07T17:29:33.170-03:00  INFO 13281 --- [catalogo-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:catalogo user=SA
+2026-10-07T17:29:33.183-03:00  INFO 13281 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-07T17:29:33.751-03:00  INFO 13281 --- [catalogo-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:mem:catalogo]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -34,73 +34,24 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-10-07T11:01:08.523-03:00  INFO 22810 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-07T17:29:41.251-03:00  INFO 13281 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: create table tb_produtos (id bigint generated by default as identity, ativo boolean, categoria enum ('ACESSORIO','CALCA','CAMISA','CAMISETA','MOLETOM'), descricao varchar(255), nome varchar(255), preco_base numeric(38,2), version bigint not null, primary key (id))
-2026-10-07T11:01:08.630-03:00  INFO 22810 --- [catalogo-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-07T11:01:08.805-03:00  INFO 22810 --- [catalogo-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-10-07T11:01:09.584-03:00  WARN 22810 --- [catalogo-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-10-07T11:01:11.332-03:00  INFO 22810 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
-2026-10-07T11:01:11.357-03:00  INFO 22810 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Started CatalogoApplication in 11.783 seconds (process running for 13.162)
-2026-10-07T11:02:54.800-03:00  INFO 22810 --- [catalogo-service] [nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-10-07T11:02:54.801-03:00  INFO 22810 --- [catalogo-service] [nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-10-07T11:02:54.805-03:00  INFO 22810 --- [catalogo-service] [nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+2026-10-07T17:29:41.716-03:00  INFO 13281 --- [catalogo-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T17:29:42.382-03:00  INFO 13281 --- [catalogo-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-07T17:29:44.833-03:00  WARN 13281 --- [catalogo-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-07T17:29:51.681-03:00  INFO 13281 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-10-07T17:29:51.781-03:00  INFO 13281 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Started CatalogoApplication in 66.853 seconds (process running for 74.401)
+2026-10-07T17:30:05.930-03:00  INFO 13281 --- [catalogo-service] [nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-07T17:30:05.931-03:00  INFO 13281 --- [catalogo-service] [nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-07T17:30:05.952-03:00  INFO 13281 --- [catalogo-service] [nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
 Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: update tb_produtos set ativo=?,categoria=?,descricao=?,nome=?,preco_base=?,version=? where id=? and version=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
@@ -115,185 +66,6 @@ Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nom
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: update tb_produtos set ativo=?,categoria=?,descricao=?,nome=?,preco_base=?,version=? where id=? and version=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Exception in thread "http-nio-8082-exec-8" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
-	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
-	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
-	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
-	at ch.qos.logback.classic.Logger.log(Logger.java:805)
-	at org.slf4j.bridge.SLF4JBridgeHandler.callLocationAwareLogger(SLF4JBridgeHandler.java:232)
-	at org.slf4j.bridge.SLF4JBridgeHandler.publish(SLF4JBridgeHandler.java:313)
-	at java.logging/java.util.logging.Logger.log(Logger.java:983)
-	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
-	at java.logging/java.util.logging.Logger.logp(Logger.java:1287)
-	at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:170)
-	at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:141)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2054)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
-	... 17 more
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Exception in thread "SpringApplicationShutdownHook" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
-	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:145)
-	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:429)
-	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:388)
-	at ch.qos.logback.classic.Logger.log(Logger.java:805)
-	at org.apache.commons.logging.impl.Slf4jLogFactory$Slf4jLocationAwareLog.log(Slf4jLogFactory.java:126)
-	at org.apache.commons.logging.impl.Slf4jLogFactory$Slf4jLocationAwareLog.warn(Slf4jLogFactory.java:146)
-	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1202)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
-	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
-	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
-	... 13 more
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v4.1.1)
-
-2026-10-07T11:26:58.342-03:00  INFO 28698 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Starting CatalogoApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 28698 (/home/gabriel/Downloads/Backend/poiesis-backend-spring/.run-local/artifacts/catalogo.jar started by gabriel in /home/gabriel/Downloads/Backend/poiesis-backend-spring)
-2026-10-07T11:26:58.356-03:00  INFO 28698 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : No active profile set, falling back to 1 default profile: "default"
-2026-10-07T11:27:03.040-03:00  INFO 28698 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-07T11:27:03.318-03:00  INFO 28698 --- [catalogo-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 243 ms. Found 1 JPA repository interface.
-2026-10-07T11:27:06.849-03:00  INFO 28698 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
-2026-10-07T11:27:06.906-03:00  INFO 28698 --- [catalogo-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-10-07T11:27:06.909-03:00  INFO 28698 --- [catalogo-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-10-07T11:27:07.078-03:00  INFO 28698 --- [catalogo-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 8376 ms
-2026-10-07T11:27:08.156-03:00  INFO 28698 --- [catalogo-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-10-07T11:27:08.442-03:00  INFO 28698 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
-2026-10-07T11:27:12.933-03:00  INFO 28698 --- [catalogo-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-07T11:27:13.237-03:00  INFO 28698 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-10-07T11:27:14.363-03:00  INFO 28698 --- [catalogo-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:catalogo user=SA
-2026-10-07T11:27:14.368-03:00  INFO 28698 --- [catalogo-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-10-07T11:27:14.673-03:00  INFO 28698 --- [catalogo-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [jdbc:h2:mem:catalogo]
-	Database driver: H2 JDBC Driver
-	Database dialect: H2Dialect
-	Database version: 2.4.240
-	Default catalog/schema: CATALOGO/PUBLIC
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: 100
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-10-07T11:27:17.695-03:00  INFO 28698 --- [catalogo-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: create table tb_produtos (id bigint generated by default as identity, ativo boolean, categoria enum ('ACESSORIO','CALCA','CAMISA','CAMISETA','MOLETOM'), descricao varchar(255), nome varchar(255), preco_base numeric(38,2), version bigint not null, primary key (id))
-2026-10-07T11:27:17.810-03:00  INFO 28698 --- [catalogo-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-07T11:27:18.094-03:00  INFO 28698 --- [catalogo-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-10-07T11:27:19.086-03:00  WARN 28698 --- [catalogo-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-10-07T11:27:21.057-03:00  INFO 28698 --- [catalogo-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
-2026-10-07T11:27:21.083-03:00  INFO 28698 --- [catalogo-service] [           main] c.p.c.s.CatalogoApplication              : Started CatalogoApplication in 25.993 seconds (process running for 28.967)
-2026-10-07T11:27:52.379-03:00  INFO 28698 --- [catalogo-service] [nio-8082-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-10-07T11:27:52.380-03:00  INFO 28698 --- [catalogo-service] [nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-10-07T11:27:52.385-03:00  INFO 28698 --- [catalogo-service] [nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: update tb_produtos set ativo=?,categoria=?,descricao=?,nome=?,preco_base=?,version=? where id=? and version=?
-Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-Hibernate: update tb_produtos set ativo=?,categoria=?,descricao=?,nome=?,preco_base=?,version=? where id=? and version=?
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
-Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: insert into tb_produtos (ativo,categoria,descricao,nome,preco_base,version,id) values (?,?,?,?,?,?,default)
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
@@ -306,10 +78,17 @@ Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nom
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
 Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
-2026-10-07T11:31:36.753-03:00  INFO 28698 --- [catalogo-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
-2026-10-07T11:31:36.759-03:00  INFO 28698 --- [catalogo-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
-2026-10-07T11:31:36.768-03:00  INFO 28698 --- [catalogo-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-10-07T11:31:36.773-03:00  INFO 28698 --- [catalogo-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-10-07T11:31:36.776-03:00  INFO 28698 --- [catalogo-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.id=?
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true
+Hibernate: select pe1_0.id,pe1_0.ativo,pe1_0.categoria,pe1_0.descricao,pe1_0.nome,pe1_0.preco_base,pe1_0.version from tb_produtos pe1_0 where pe1_0.ativo=true

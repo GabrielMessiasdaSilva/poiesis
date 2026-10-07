@@ -150,6 +150,8 @@ Authorization: Bearer {{tokenAdmin}}
 }
 ```
 
+Cada item aceita `customizacaoIds` opcional, por exemplo `{ "produtoId": 1, "quantidade": 2, "customizacaoIds": [3] }`. Os IDs devem corresponder a opções ativas desse produto, sem duplicatas e com no máximo uma opção por tipo (até 20 por item). O preço unitário é o preço base mais os adicionais; nomes e preços das opções são copiados para o pedido e retornados em `itens[].customizacoes`. Não envie nomes ou preços de customização: o servidor consulta esses valores no serviço de Customização. O serviço Pedido usa `application.config.customizacao-url` (padrão `http://localhost:8086`).
+
 Guarde o campo `id` da resposta (ele será o `pedidoId` dentro do evento). Após a criação, Pedido publica o evento `pedido.criado` no RabbitMQ. Produção e Relatório o processam de forma assíncrona; aguarde alguns segundos antes de consultar esses serviços.
 
 Para consultar pedidos, usuário comum vê somente os próprios pedidos; administrador vê todos. A consulta por ID também respeita esse acesso: pedido inexistente ou pertencente a outro usuário retorna `404`.
@@ -208,6 +210,10 @@ Authorization: Bearer {{tokenAdmin}}
 }
 ```
 
+## CORS no frontend web
+
+O gateway autoriza o frontend em `http://localhost:8087`, `http://127.0.0.1:8087` e origens HTTP/HTTPS na porta `8090`. `OPTIONS /v1/auth/register` é processado antes da autenticação; cadastro e login não exigem token. Alterações exigem recompilar e reiniciar o gateway. A URL da API permanece `http://localhost:8080`, independentemente da porta do frontend.
+
 ## 7. O que esperar de erros comuns
 
 - `401 Unauthorized`: token ausente, inválido ou expirado; faça login novamente.
@@ -221,6 +227,16 @@ Authorization: Bearer {{tokenAdmin}}
 O teste em [`multi_request/teste-carga.js`](multi_request/teste-carga.js) simula criações concorrentes de pedidos através do gateway. Ele autentica com o administrador, cria um produto de teste no Catálogo, envia pedidos e inativa esse produto ao terminar. Os pedidos criados permanecem no banco até os serviços serem reiniciados.
 
 O teste não verifica estoque: o modelo atual de Produto não possui campo de estoque nem o fluxo de Pedido faz baixa de estoque. Cada iteração valida `201 Created` com ID; ao final, consulta os pedidos e confere se a quantidade persistida para o produto temporário coincide com as iterações, se os IDs são únicos e se os itens estão íntegros. A publicação de eventos também exige que a conexão CloudAMQP esteja disponível.
+
+Controle de estoque está fora do escopo do projeto. A quantidade enviada representa a solicitação do cliente; o sistema acompanha catálogo, pedidos e produção, sem saldo, reserva ou baixa de peças.
+
+Para validar o fluxo funcional com os sete serviços ativos, execute:
+
+```bash
+python3 tests/fluxo_sem_estoque.py
+```
+
+Esse teste verifica cadastro, login, sessão, criação e edição de produto e opções, permissões, pedido com cálculo de preço, consumo do evento pela produção, atualização de status e relatórios. Ao terminar, inativa o produto e a opção usados. O usuário e o pedido de teste permanecem registrados. Também verifica preflight de cadastro e cabeçalhos CORS para `http://localhost:8087`, persistência das customizações escolhidas, cálculo dos adicionais, histórico após edição/inativação e rejeição de opções indisponíveis ou IDs duplicados.
 
 Com os sete serviços ativos e o k6 instalado, rode na raiz:
 

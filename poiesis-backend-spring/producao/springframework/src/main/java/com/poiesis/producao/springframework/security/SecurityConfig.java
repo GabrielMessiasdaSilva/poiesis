@@ -29,6 +29,7 @@ public class SecurityConfig {
         String secret = environment.getRequiredProperty("application.jwt.secret");
         SecretKeySpec key = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
         var decoder = NimbusJwtDecoder.withSecretKey(key).macAlgorithm(MacAlgorithm.HS256).build();
+        // Exige expiração e valida os horários do token sem tolerância adicional.
         decoder.setJwtValidator(new org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator<>(
                 org.springframework.security.oauth2.jwt.JwtValidators.createDefault(),
                 new org.springframework.security.oauth2.jwt.JwtTimestampValidator(java.time.Duration.ZERO),
@@ -40,6 +41,7 @@ public class SecurityConfig {
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter roles = new JwtGrantedAuthoritiesConverter();
+        // Converte os perfis do JWT em permissões ROLE_ usadas pelo Spring Security.
         roles.setAuthoritiesClaimName("roles");
         roles.setAuthorityPrefix("ROLE_");
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
@@ -50,6 +52,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http,
             Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter) throws Exception {
+        // Cada requisição é autenticada por token, sem sessão HTTP mantida no servidor.
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth

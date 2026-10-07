@@ -20,16 +20,19 @@ public class RelatorioConsumer {
     }
 
     @RabbitListener(queues = RabbitMQConfig.PEDIDO_CRIADO_QUEUE)
+    // Mantém as operações de banco deste processamento na mesma transação.
     @Transactional
     public void processarEventoPedidoCriado(PedidoCriadoEvent event) {
+        // Eventos inválidos são rejeitados sem voltar à fila para nova tentativa.
         if (event.pedidoId() == null) {
             throw new org.springframework.amqp.AmqpRejectAndDontRequeueException("Evento de pedido sem identificador válido.");
         }
         Long pedidoId = event.pedidoId();
+        // Ignora pedidos já registrados; a restrição única no banco cobre inserções concorrentes.
         if (repository.existsByPedidoId(pedidoId)) {
             return;
         }
-        // Extrai o valor do pedido e registra o incremento diário nas métricas
+        // O valor precisa ser válido para não distorcer o faturamento.
         if (event.valorTotal() == null || event.valorTotal().signum() < 0) {
             throw new org.springframework.amqp.AmqpRejectAndDontRequeueException("Evento sem valor válido.");
         }
@@ -38,7 +41,7 @@ public class RelatorioConsumer {
         if (event.dataCriacao() == null) throw new org.springframework.amqp.AmqpRejectAndDontRequeueException("Evento sem data de criação do pedido.");
         LocalDate dataPedido = event.dataCriacao().toLocalDate();
 
-        // Registra uma nova entrada de consolidação para o dia
+        // Cada pedido gera uma entrada na data original da venda, mesmo se o evento chegar depois.
         RelatorioConsolidadoEntity registro = new RelatorioConsolidadoEntity(dataPedido, 1L, valorTotal, pedidoId);
         repository.save(registro);
     }

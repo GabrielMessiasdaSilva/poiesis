@@ -8,6 +8,13 @@ public class ItemPedido {
     private String nomeProduto;
     private Integer quantidade;
     private BigDecimal precoUnitario;
+    private java.util.List<Long> customizacaoIds = java.util.List.of();
+    private java.util.List<CustomizacaoEscolhida> customizacoes = java.util.List.of();
+
+    public java.util.List<Long> getCustomizacaoIds() { return customizacaoIds; }
+    public void setCustomizacaoIds(java.util.List<Long> ids) { customizacaoIds = ids == null ? java.util.List.of() : ids; }
+    public java.util.List<CustomizacaoEscolhida> getCustomizacoes() { return customizacoes; }
+    public void setCustomizacoes(java.util.List<CustomizacaoEscolhida> opcoes) { customizacoes = java.util.List.copyOf(opcoes); }
 
     public ItemPedido() {}
 

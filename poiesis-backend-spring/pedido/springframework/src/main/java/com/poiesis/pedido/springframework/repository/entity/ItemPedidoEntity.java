@@ -16,6 +16,14 @@ public class ItemPedidoEntity {
     private Integer quantidade;
     private BigDecimal precoUnitario;
 
+    @ElementCollection
+    @CollectionTable(name = "tb_item_customizacao", joinColumns = @JoinColumn(name = "item_id"))
+    @OrderColumn(name = "posicao")
+    private java.util.List<CustomizacaoEscolhidaEntity> customizacoes = new java.util.ArrayList<>();
+
+    public java.util.List<CustomizacaoEscolhidaEntity> getCustomizacoes() { return customizacoes; }
+    public void setCustomizacoes(java.util.List<CustomizacaoEscolhidaEntity> opcoes) { customizacoes = new java.util.ArrayList<>(opcoes); }
+
     public ItemPedidoEntity() {}
 
     public ItemPedidoEntity(Long produtoId, String nomeProduto, Integer quantidade, BigDecimal precoUnitario) {

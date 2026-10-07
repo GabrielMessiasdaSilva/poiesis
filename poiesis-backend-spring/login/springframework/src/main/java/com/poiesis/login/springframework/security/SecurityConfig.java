@@ -17,6 +17,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        // Armazena um hash da senha; o BCrypt permite verificá-la sem recuperar o texto original.
         return new BCryptPasswordEncoder();
     }
 
@@ -27,6 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // Cada requisição é autenticada por token, sem sessão HTTP mantida no servidor.
         http
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -200,8 +200,17 @@ for service in "${SERVICES[@]}"; do
     fi
 done
 
-printf '\n=== Compilando e instalando o backend completo ===\n'
-mvn -f "$ROOT/pom.xml" -DskipTests clean install
+for service in "${SERVICES[@]}"; do
+    if [[ ! -f "$ROOT/$service/pom.xml" ]]; then
+        printf 'pom.xml não encontrado para %s: %s/%s/pom.xml\n' "$service" "$ROOT" "$service" >&2
+        exit 1
+    fi
+done
+
+for service in "${SERVICES[@]}"; do
+    printf '\n=== Compilando e instalando %s ===\n' "$service"
+    mvn -f "$ROOT/$service/pom.xml" -DskipTests clean install
+done
 
 trap 'trap - ERR INT TERM; stop_services || true; exit 1' ERR INT TERM
 printf '\n=== Iniciando os microsserviços ===\n'

@@ -15,6 +15,7 @@ public class ProducaoService {
     }
 
     public OrdemProducao iniciarProducao(Long pedidoId, String clienteEmail) {
+        // Reutiliza a ordem quando o mesmo pedido é recebido novamente.
         OrdemProducao existente = repository.buscarPorPedidoId(pedidoId).orElse(null);
         if (existente != null) {
             return existente;
