@@ -217,3 +217,8 @@ Hibernate: select i1_0.pedido_id,i1_0.id,i1_0.nome_produto,i1_0.preco_unitario,i
 Hibernate: select i1_0.pedido_id,i1_0.id,i1_0.nome_produto,i1_0.preco_unitario,i1_0.produto_id,i1_0.quantidade from tb_item_pedido i1_0 where i1_0.pedido_id=?
 Hibernate: select i1_0.pedido_id,i1_0.id,i1_0.nome_produto,i1_0.preco_unitario,i1_0.produto_id,i1_0.quantidade from tb_item_pedido i1_0 where i1_0.pedido_id=?
 Hibernate: select i1_0.pedido_id,i1_0.id,i1_0.nome_produto,i1_0.preco_unitario,i1_0.produto_id,i1_0.quantidade from tb_item_pedido i1_0 where i1_0.pedido_id=?
+2026-10-07T11:31:36.819-03:00  INFO 28883 --- [pedido-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T11:31:36.828-03:00  INFO 28883 --- [pedido-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T11:31:37.928-03:00  INFO 28883 --- [pedido-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:31:37.931-03:00  INFO 28883 --- [pedido-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T11:31:37.935-03:00  INFO 28883 --- [pedido-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

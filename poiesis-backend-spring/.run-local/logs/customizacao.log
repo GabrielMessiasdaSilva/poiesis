@@ -402,3 +402,8 @@ Hibernate: insert into tb_customizacoes (ativo,nome,preco_adicional,produto_id,t
 Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
 Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
 Hibernate: select ce1_0.id,ce1_0.ativo,ce1_0.nome,ce1_0.preco_adicional,ce1_0.produto_id,ce1_0.tipo,ce1_0.version from tb_customizacoes ce1_0 where ce1_0.produto_id=? and ce1_0.ativo=true
+2026-10-07T11:31:36.987-03:00  INFO 28974 --- [customizacao-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T11:31:37.000-03:00  INFO 28974 --- [customizacao-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T11:31:37.010-03:00  INFO 28974 --- [customizacao-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:31:37.022-03:00  INFO 28974 --- [customizacao-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T11:31:37.028-03:00  INFO 28974 --- [customizacao-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

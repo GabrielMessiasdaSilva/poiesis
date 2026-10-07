@@ -2426,3 +2426,14 @@ Hibernate: select r1_0.usuario_id,r1_0.role_name from tb_usuario_roles r1_0 wher
 Hibernate: select count(*) from tb_revoked_tokens rte1_0 where rte1_0.token_hash=?
 Hibernate: select ue1_0.id,ue1_0.ativo,ue1_0.email,ue1_0.nome,ue1_0.senha,ue1_0.version from tb_usuarios ue1_0 where ue1_0.email=?
 Hibernate: select r1_0.usuario_id,r1_0.role_name from tb_usuario_roles r1_0 where r1_0.usuario_id=?
+Hibernate: select count(*) from tb_revoked_tokens rte1_0 where rte1_0.token_hash=?
+Hibernate: select ue1_0.id,ue1_0.ativo,ue1_0.email,ue1_0.nome,ue1_0.senha,ue1_0.version from tb_usuarios ue1_0 where ue1_0.email=?
+Hibernate: select r1_0.usuario_id,r1_0.role_name from tb_usuario_roles r1_0 where r1_0.usuario_id=?
+Hibernate: select count(*) from tb_revoked_tokens rte1_0 where rte1_0.token_hash=?
+Hibernate: select ue1_0.id,ue1_0.ativo,ue1_0.email,ue1_0.nome,ue1_0.senha,ue1_0.version from tb_usuarios ue1_0 where ue1_0.email=?
+Hibernate: select r1_0.usuario_id,r1_0.role_name from tb_usuario_roles r1_0 where r1_0.usuario_id=?
+2026-10-07T11:31:38.156-03:00  INFO 22929 --- [login-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T11:31:38.633-03:00  INFO 22929 --- [login-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T11:31:38.786-03:00  INFO 22929 --- [login-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:31:38.959-03:00  INFO 22929 --- [login-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T11:31:39.501-03:00  INFO 22929 --- [login-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

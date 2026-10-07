@@ -355,3 +355,10 @@ Hibernate:
         (data_consolidacao, faturamento_total, pedido_id, total_pedidos, version, id) 
     values
         (?, ?, ?, ?, ?, default)
+2026-10-07T11:31:37.857-03:00  INFO 23207 --- [relatorio-service] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-10-07T11:31:37.858-03:00  INFO 23207 --- [relatorio-service] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-10-07T11:31:37.913-03:00  INFO 23207 --- [relatorio-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T11:31:37.917-03:00  INFO 23207 --- [relatorio-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T11:31:38.141-03:00  INFO 23207 --- [relatorio-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:31:38.171-03:00  INFO 23207 --- [relatorio-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T11:31:38.175-03:00  INFO 23207 --- [relatorio-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

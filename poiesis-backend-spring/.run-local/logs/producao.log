@@ -93,3 +93,10 @@ Hibernate: select ope1_0.id,ope1_0.cliente_email,ope1_0.data_atualizacao,ope1_0.
 Hibernate: select ope1_0.id,ope1_0.cliente_email,ope1_0.data_atualizacao,ope1_0.data_inicio,ope1_0.pedido_id,ope1_0.status,ope1_0.version from tb_ordem_producao ope1_0 where ope1_0.pedido_id=?
 Hibernate: select ope1_0.id,ope1_0.cliente_email,ope1_0.data_atualizacao,ope1_0.data_inicio,ope1_0.pedido_id,ope1_0.status,ope1_0.version from tb_ordem_producao ope1_0 where ope1_0.pedido_id=?
 Hibernate: insert into tb_ordem_producao (cliente_email,data_atualizacao,data_inicio,pedido_id,status,version,id) values (?,?,?,?,?,?,default)
+2026-10-07T11:31:37.849-03:00  INFO 23127 --- [producao-service] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-10-07T11:31:37.850-03:00  INFO 23127 --- [producao-service] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-10-07T11:31:37.904-03:00  INFO 23127 --- [producao-service] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-07T11:31:37.954-03:00  INFO 23127 --- [producao-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-07T11:31:38.056-03:00  INFO 23127 --- [producao-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T11:31:38.078-03:00  INFO 23127 --- [producao-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-07T11:31:38.081-03:00  INFO 23127 --- [producao-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
