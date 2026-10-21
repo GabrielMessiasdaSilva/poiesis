@@ -5,7 +5,7 @@ Execute com os seis serviços e RabbitMQ disponíveis, preferencialmente em um a
 ```bash
 k6 run -e BASE_URL=http://localhost:8080 -e VUS=20 -e ITERATIONS=100 -e QUANTIDADE_POR_PEDIDO=3 multi_request/teste-carga.js
 k6 run -e BASE_URL=http://localhost:8080 -e VUS=10 -e ITERATIONS=50 multi_request/teste-customizacao.js
-k6 run -e BASE_URL=http://localhost:8080 -e VUS=10 -e ITERATIONS=50 multi_request/teste-concorrencia.js
+k6 run -e BASE_URL=http://localhost:8080 -e VUS=10 multi_request/teste-concorrencia.js
 ```
 
 Execute os comandos na pasta `poiesis-backend-spring`. Use `--summary-export=resultado.json` para guardar as métricas. Todos exigem 100% dos checks e nenhuma resposta HTTP inesperada; o terceiro reconhece `409` como conflito esperado.
@@ -14,7 +14,7 @@ Execute os comandos na pasta `poiesis-backend-spring`. Use `--summary-export=res
 | --- | --- |
 | `teste-carga.js` | Criação concorrente de pedidos, quantidade e valores, contagem persistida, IDs únicos, integridade dos itens e exatamente uma ordem de produção por pedido |
 | `teste-customizacao.js` | Cadastro, edição, leitura e inativação simultâneos de opções diferentes |
-| `teste-concorrencia.js` | Edições simultâneas do mesmo produto, opção e ordem; sucesso `200` ou conflito `409`, sem `500`; campos persistidos pertencentes à mesma escrita |
+| `teste-concorrencia.js` | Uma disputa simultânea por VU no mesmo produto, opção e ordem; sucesso `200` ou conflito `409`, sem `500`; campos persistidos pertencentes à mesma escrita e status propagado ao pedido |
 
 O fluxo é produção sob demanda: quantidade é o número de peças solicitado, sem saldo, reserva ou baixa de estoque. Os testes não simulam disputa de unidades em estoque.
 
