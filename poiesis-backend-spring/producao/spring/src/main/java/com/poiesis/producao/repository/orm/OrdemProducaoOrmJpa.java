@@ -46,6 +46,8 @@ public class OrdemProducaoOrmJpa {
     }
 
     public Long getId() { return id; }
+    public Long getVersion() { return version; }
+    public void setVersion(Long version) { this.version = version; }
     public void setId(Long id) { this.id = id; }
     public Long getPedidoId() { return pedidoId; }
     public void setPedidoId(Long pedidoId) { this.pedidoId = pedidoId; }

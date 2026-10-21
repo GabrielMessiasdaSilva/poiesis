@@ -1,6 +1,6 @@
 # Carga e concorrência do Poiesis
 
-Execute com os seis serviços e RabbitMQ disponíveis, preferencialmente em um ambiente isolado. Os testes cadastram dados reais: produtos e opções são inativados ao terminar, mas pedidos, ordens e projeções de vendas permanecem no ambiente. `BASE_URL` aponta para a raiz do gateway. `ADMIN_EMAIL` e `ADMIN_PASSWORD` substituem o administrador local padrão.
+Execute com os seis serviços e RabbitMQ disponíveis, preferencialmente em um ambiente isolado. Os testes cadastram dados reais: produtos e opções são inativados ao terminar, mas usuários de teste, pedidos, ordens e projeções de vendas permanecem no ambiente. `BASE_URL` aponta para a raiz do gateway. `ADMIN_EMAIL` e `ADMIN_PASSWORD` identificam o administrador; `CLIENT_PASSWORD` define a senha das contas temporárias de cliente (mínimo de oito caracteres). Cada execução cria uma conta de cliente com e-mail exclusivo, usada para efetuar a compra.
 
 ```bash
 k6 run -e BASE_URL=http://localhost:8080 -e VUS=20 -e ITERATIONS=100 -e QUANTIDADE_POR_PEDIDO=3 multi_request/teste-carga.js
@@ -22,6 +22,6 @@ O fluxo é produção sob demanda: quantidade é o número de peças solicitado,
 
 A interface bloqueia envios repetidos enquanto uma operação está em andamento e não repete automaticamente escritas após falha. O backend ainda não oferece uma chave de idempotência para a criação do pedido. Duas requisições independentes representam dois pedidos; em caso de falha de rede, consulte a lista antes de reenviar.
 
-A etapa de produção e o status do pedido são campos de serviços distintos. Alterar a etapa atualiza a ordem e o resumo de produção, mas atualmente não publica uma atualização do status no serviço Pedido. O relatório de vendas soma pedidos criados recebidos por evento, não pagamentos ou receita líquida. Salvamento de pedido e publicação RabbitMQ continuam sem transação atômica/outbox.
+O fluxo de status é: cliente cria o pedido → RabbitMQ avisa produção → administrador atualiza a etapa → RabbitMQ publica `producao.atualizada` → Pedido atualiza o status resumido (`EM_PROCESSAMENTO`, `FINALIZADO` ou `CANCELADO`). O consumidor é idempotente para eventos repetidos e o cliente consulta o acompanhamento detalhado da produção; a tela atualiza os dados automaticamente a cada 15 segundos enquanto está aberta. A publicação e a gravação no banco ainda não usam outbox transacional, portanto uma indisponibilidade do broker no momento da publicação pode atrasar a atualização resumida; o acompanhamento detalhado consultado pelo cliente continua refletindo a ordem gravada. O relatório de vendas soma pedidos recebidos por evento, não pagamentos ou receita líquida.
 
 Os resultados locais avaliam correção sob a carga indicada. Não são uma estimativa de capacidade de produção nem um SLA de latência.

@@ -1,6 +1,7 @@
 package com.poiesis.pedido.repository;
 
 import com.poiesis.pedido.entity.Pedido;
+import com.poiesis.pedido.entity.StatusPedido;
 import com.poiesis.pedido.repository.PedidoRepository;
 import com.poiesis.pedido.repository.adapter.PedidoRepositoryAdapter;
 import com.poiesis.pedido.repository.jpa.PedidoRepositoryWithJpa;
@@ -48,5 +49,21 @@ public class PedidoRepositoryImpl implements PedidoRepository {
     public List<Pedido> listarPorClienteEmail(String clienteEmail) {
         return springDataPedidoRepository.findByClienteEmailOrderByDataCriacaoDesc(clienteEmail)
                 .stream().map(pedidoAdapter::toDomain).toList();
+    }
+
+    @Override
+    @Transactional
+    public void atualizarStatus(Long pedidoId, String clienteEmail, StatusPedido status) {
+        PedidoOrmJpa pedido = springDataPedidoRepository.findById(pedidoId)
+                .orElseThrow(() -> new IllegalArgumentException("Pedido não encontrado: " + pedidoId));
+        if (!pedido.getClienteEmail().equalsIgnoreCase(clienteEmail)) {
+            throw new IllegalArgumentException("O cliente do evento não corresponde ao pedido.");
+        }
+        StatusPedido atual = pedido.getStatus();
+        if (atual == StatusPedido.CANCELADO || atual == StatusPedido.FINALIZADO) return;
+        if (atual != status) {
+            pedido.setStatus(status);
+            springDataPedidoRepository.saveAndFlush(pedido);
+        }
     }
 }

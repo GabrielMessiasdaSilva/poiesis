@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 @Component
 public class OrdemProducaoRepositoryImpl implements OrdemProducaoRepository {
@@ -33,6 +34,9 @@ public class OrdemProducaoRepositoryImpl implements OrdemProducaoRepository {
             entity = repository.findById(ordemProducao.getId())
                     .orElseThrow(() -> new IllegalArgumentException(
                             "Ordem de produção não encontrada ID: " + ordemProducao.getId()));
+            if (ordemProducao.getVersion() == null || !ordemProducao.getVersion().equals(entity.getVersion())) {
+                throw new OptimisticLockingFailureException("Ordem de produção alterada por outra operação.");
+            }
             entity.setPedidoId(ordemProducao.getPedidoId());
             entity.setClienteEmail(ordemProducao.getClienteEmail());
             entity.setStatus(ordemProducao.getStatus());
@@ -41,7 +45,7 @@ public class OrdemProducaoRepositoryImpl implements OrdemProducaoRepository {
                 entity.setHistorico(ordemProducao.getHistorico().stream()
                     .map(item -> new com.poiesis.producao.repository.orm.HistoricoStatusOrmJpa(item.status(), item.dataHora())).toList());
         }
-        OrdemProducaoOrmJpa saved = repository.save(entity);
+        OrdemProducaoOrmJpa saved = repository.saveAndFlush(entity);
         return mapper.toDomain(saved);
     }
 

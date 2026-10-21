@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import { pedidosService, type Pedido } from '../../src/services/pedidos';
 import { producaoService, type OrdemProducao, type StatusProducao } from '../../src/services/producao';
@@ -29,12 +29,19 @@ export default function Pedidos() {
         const timer = setTimeout(() => { void consultarProducao(); }, 0);
         return () => clearTimeout(timer);
     }, [consultarProducao]);
+    useFocusEffect(useCallback(() => {
+        const timer = setInterval(() => {
+            void carregar();
+            void consultarProducao();
+        }, 15000);
+        return () => clearInterval(timer);
+    }, [carregar, consultarProducao]));
     const exibidos = pedidos.filter(p => {
         const status = producoes[p.id]?.status;
         return filtro === 'Todos' || (filtro === 'Em andamento' ? status !== 'ENTREGUE' && status !== 'CANCELADO' : status === 'ENTREGUE' || p.status === 'FINALIZADO');
     }).sort((a, b) => b.id - a.id);
     return <Screen narrow>
-        <PageHeader eyebrow="Cada escolha, uma história" title={isAdmin ? 'Pedidos do ateliê.' : 'Seus pedidos.'} description={isAdmin ? 'Consulte os pedidos recebidos e os detalhes de cada cliente.' : 'Suas peças, escolhas e valores reunidos em um só lugar.'} action={<Button title="Atualizar" icon="refresh-cw" secondary disabled={carregando} onPress={() => void carregar()} />} />
+        <PageHeader eyebrow="Cada escolha, uma história" title={isAdmin ? 'Pedidos do ateliê.' : 'Seus pedidos.'} description={isAdmin ? 'Consulte os pedidos recebidos e os detalhes de cada cliente.' : 'Suas peças, escolhas e valores reunidos em um só lugar.'} action={<Button title="Atualizar" icon="refresh-cw" secondary disabled={carregando} onPress={() => { void carregar(); void consultarProducao(); }} />} />
         <View style={ui.row}>{['Todos', 'Em andamento', 'Finalizados'].map(item => <Pressable key={item} accessibilityRole="button" accessibilityState={{ selected: filtro === item }} onPress={() => setFiltro(item)} style={[ui.chip, filtro === item && ui.selected]}><Text style={{ color: colors.primary }}>{item}</Text></Pressable>)}</View>
         {erro ? <EmptyState title="Pedidos indisponíveis" description={erro} onRetry={() => void carregar()} /> : carregando && !pedidos.length ? <EmptyState title="" description="" loading /> : !exibidos.length ? <><EmptyState title={pedidos.length ? 'Nenhum pedido neste filtro' : 'Sua primeira peça começa aqui'} description={pedidos.length ? 'Escolha outro filtro para consultar os pedidos.' : 'Explore o catálogo e escolha os detalhes do seu primeiro pedido.'} /><Button title="Explorar catálogo" onPress={() => router.push('/(tabs)')} /></> : exibidos.map(pedido => <View key={pedido.id} style={ui.card}>
             <View style={[ui.row, { justifyContent: 'space-between' }]}>

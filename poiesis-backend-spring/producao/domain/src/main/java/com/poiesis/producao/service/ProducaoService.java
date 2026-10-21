@@ -35,6 +35,8 @@ public class ProducaoService {
     public OrdemProducao atualizarStatus(Long ordemId, StatusProducao novoStatus) {
         OrdemProducao ordem = repository.buscarPorId(ordemId)
                 .orElseThrow(() -> new IllegalArgumentException("Ordem de Produção não encontrada ID: " + ordemId));
+        // Repetir a mesma solicitação é seguro e deixa o endpoint idempotente sob concorrência.
+        if (ordem.getStatus() == novoStatus) return ordem;
         if (!ordem.getStatus().podeTransicionarPara(novoStatus)) {
             throw new IllegalArgumentException("Transição inválida: " + ordem.getStatus() + " para " + novoStatus + ".");
         }

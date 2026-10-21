@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OrdemProducao {
     private Long id;
+    private Long version;
     private Long pedidoId;
     private String clienteEmail;
     private StatusProducao status;
@@ -21,7 +22,13 @@ public class OrdemProducao {
 
     public OrdemProducao(Long id, Long pedidoId, String clienteEmail, StatusProducao status, LocalDateTime dataInicio,
             LocalDateTime dataAtualizacao, List<HistoricoStatusProducao> historico) {
+        this(id, pedidoId, clienteEmail, status, dataInicio, dataAtualizacao, historico, null);
+    }
+
+    public OrdemProducao(Long id, Long pedidoId, String clienteEmail, StatusProducao status, LocalDateTime dataInicio,
+            LocalDateTime dataAtualizacao, List<HistoricoStatusProducao> historico, Long version) {
         this.id = id;
+        this.version = version;
         this.pedidoId = pedidoId;
         this.clienteEmail = clienteEmail;
         this.status = status;
@@ -48,6 +55,8 @@ public class OrdemProducao {
     }
 
     public Long getId() { return id; }
+    public Long getVersion() { return version; }
+    public void setVersion(Long version) { this.version = version; }
     public Long getPedidoId() { return pedidoId; }
     public String getClienteEmail() { return clienteEmail; }
     public StatusProducao getStatus() { return status; }

@@ -34,7 +34,8 @@ public class OrdemProducaoRepositoryAdapter {
                 entity.getDataInicio(),
                 entity.getDataAtualizacao(),
                 entity.getHistorico().stream()
-                    .map(item -> new HistoricoStatusProducao(item.getStatus(), item.getDataHora())).toList()
+                    .map(item -> new HistoricoStatusProducao(item.getStatus(), item.getDataHora())).toList(),
+                entity.getVersion()
         );
     }
 }
