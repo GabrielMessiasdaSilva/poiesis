@@ -42,7 +42,10 @@
     "android": "expo start --android --port 8090",
     "ios": "expo start --ios --port 8090",
     "web": "expo start --web --port 8090",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "test:session": "node --test tests/api-session.test.cjs",
+    "test:backend": "node tests/backend-integration.cjs",
+    "test:backend:web": "node tests/backend-integration.cjs --web"
   },
   "private": true
 }

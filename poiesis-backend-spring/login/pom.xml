@@ -23,7 +23,7 @@
 
     <modules>
         <module>domain</module>
-        <module>springframework</module>
+        <module>spring</module>
     </modules>
 
     <dependencyManagement>

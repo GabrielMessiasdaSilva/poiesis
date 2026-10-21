@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 import { Counter } from 'k6/metrics';
 
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:8080';
@@ -16,6 +16,7 @@ const pedidosPersistidos = new Counter('pedidos_persistidos');
 export const options = {
   thresholds: {
     checks: ['rate==1'],
+    http_req_failed: ['rate==0'],
   },
   scenarios: {
     criacao_concorrente_de_pedidos: {
@@ -83,6 +84,7 @@ export default function (data) {
   const created = check(response, {
     'pedido criado (201)': (r) => r.status === 201,
     'resposta contém ID do pedido': (r) => r.status === 201 && Boolean(r.json('id')),
+    'valor calculado para a quantidade solicitada': (r) => r.status === 201 && Math.round(Number(r.json('valorTotal')) * 100) === 4990 * QUANTIDADE_POR_PEDIDO,
   });
 
   if (created) pedidosCriados.add(1);
@@ -112,7 +114,8 @@ export function teardown(data) {
     const estruturaIntegra = pedidosDoTeste.every((pedido) =>
       pedido.itens.length === 1
       && String(pedido.itens[0].produtoId) === String(data.produtoId)
-      && pedido.itens[0].quantidade === QUANTIDADE_POR_PEDIDO);
+      && pedido.itens[0].quantidade === QUANTIDADE_POR_PEDIDO
+      && Math.round(Number(pedido.valorTotal) * 100) === 4990 * QUANTIDADE_POR_PEDIDO);
 
     pedidosPersistidos.add(pedidosDoTeste.length);
     check(pedidosDoTeste, {
@@ -120,6 +123,16 @@ export function teardown(data) {
         orders.length === data.totalEsperado,
       'cada pedido persistido tem ID único': (orders) => new Set(orders.map((pedido) => pedido.id)).size === orders.length,
       'itens dos pedidos persistidos estão íntegros': () => estruturaIntegra,
+    });
+    let ordens = [];
+    for (let attempt = 0; attempt < 30; attempt++) {
+      const response = http.get(`${BASE_URL}/v1/producao`, jsonParams(data.token));
+      if (response.status === 200) ordens = response.json().filter(o => idsUnicos.has(o.pedidoId));
+      if (ordens.length >= pedidosDoTeste.length) break;
+      sleep(1);
+    }
+    check(ordens, {
+      'cada pedido gera exatamente uma ordem de produção': rows => rows.length === pedidosDoTeste.length && new Set(rows.map(o => o.pedidoId)).size === pedidosDoTeste.length,
     });
     console.log(`Pedidos persistidos: ${pedidosDoTeste.length}/${data.totalEsperado}; IDs únicos: ${idsUnicos.size}.`);
   }

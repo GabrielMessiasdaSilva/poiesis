@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "poiesisfrontend",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "android": {
       "predictiveBackGestureEnabled": false
     },
@@ -18,7 +18,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF"
+          "backgroundColor": "#F7F2EB"
         }
       ]
     ],
