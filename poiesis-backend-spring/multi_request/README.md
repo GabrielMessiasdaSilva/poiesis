@@ -1,6 +1,6 @@
 # Carga e concorrência do Poiesis
 
-Execute com os seis serviços e RabbitMQ disponíveis, preferencialmente em um ambiente isolado. Os testes cadastram dados reais: produtos e opções são inativados ao terminar, mas usuários de teste, pedidos, ordens e projeções de vendas permanecem no ambiente. `BASE_URL` aponta para a raiz do gateway. `ADMIN_EMAIL` e `ADMIN_PASSWORD` identificam o administrador; `CLIENT_PASSWORD` define a senha das contas temporárias de cliente (mínimo de oito caracteres). Cada execução cria uma conta de cliente com e-mail exclusivo, usada para efetuar a compra.
+Execute com os seis serviços e RabbitMQ disponíveis, preferencialmente em um ambiente isolado. Os testes cadastram dados reais: produtos e opções são inativados ao terminar, mas usuários de teste, pedidos, ordens e projeções de vendas permanecem no ambiente. `BASE_URL` aponta para a raiz do gateway. `ADMIN_EMAIL` e `ADMIN_PASSWORD` identificam o administrador; `CLIENT_PASSWORD` define a senha das contas temporárias usadas nos cenários de carga e concorrência (mínimo de oito caracteres). Esses cenários criam um cliente com e-mail exclusivo para efetuar a compra; o teste de customizações não cria pedidos nem clientes.
 
 ```bash
 k6 run -e BASE_URL=http://localhost:8080 -e VUS=20 -e ITERATIONS=100 -e QUANTIDADE_POR_PEDIDO=3 multi_request/teste-carga.js
