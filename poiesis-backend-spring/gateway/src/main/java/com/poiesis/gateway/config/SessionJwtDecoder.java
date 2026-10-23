@@ -17,7 +17,12 @@ public class SessionJwtDecoder implements JwtDecoder {
     @Override public Jwt decode(String token) {
         // Primeiro valida o JWT; depois confirma se a sessão continua aceita pelo login.
         Jwt jwt = delegate.decode(token);
-        try { login.get().uri("/v1/auth/session").headers(h -> h.setBearerAuth(token)).retrieve().toBodilessEntity(); }
+        try {
+            login.post().uri("/internal/sessions/validate")
+                    .body(java.util.Map.of("token", token, "email", jwt.getSubject(),
+                            "roles", jwt.getClaimAsStringList("roles")))
+                    .retrieve().toBodilessEntity();
+        }
         // Se o login falhar ou recusar a sessão, o acesso também é recusado.
         catch (RestClientException e) { throw new BadJwtException("Sessão inválida ou indisponível.", e); }
         return jwt;

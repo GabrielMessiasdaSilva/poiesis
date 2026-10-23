@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState, Platform } from 'react-native';
-import api, { setUnauthorizedHandler } from '../services/api';
+import api, { advanceSessionRevision, setUnauthorizedHandler, usesSessionCookie } from '../services/api';
 
 type Usuario = { email: string; roles: string[]; expiresAt: number };
 interface AuthContextData {
@@ -23,9 +23,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(true);
     const currentToken = useRef<string | null>(null);
     const generation = useRef(0);
-    const clearSession = useCallback(async (token?: string) => {
-        if (token && token !== currentToken.current) return;
-        generation.current++;
+    const clearSession = useCallback(async (revision?: number) => {
+        if (revision !== undefined && revision !== generation.current) return;
+        generation.current = advanceSessionRevision();
         currentToken.current = null;
         setUser(null);
         await AsyncStorage.removeMany(keys);
@@ -33,25 +33,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const validateSession = useCallback(async () => {
         const revision = generation.current;
-        const token = await AsyncStorage.getItem('@Poiesis:token');
+        const token = usesSessionCookie ? null : await AsyncStorage.getItem('@Poiesis:token');
         if (revision !== generation.current) return;
-        if (!token) { await clearSession(); return; }
+        if (!usesSessionCookie && !token) { await clearSession(revision); return; }
         currentToken.current = token;
         try {
             const { data } = await api.get<Usuario>('/v1/auth/session');
-            if (revision !== generation.current || currentToken.current !== token) return;
-            if (!validSession(data)) { await clearSession(token); return; }
-            await AsyncStorage.setItem('@Poiesis:user', JSON.stringify(data));
+            if (revision !== generation.current) return;
+            if (!validSession(data)) { await clearSession(revision); return; }
+            if (!usesSessionCookie) await AsyncStorage.setItem('@Poiesis:user', JSON.stringify(data));
             setUser(data);
         } catch {
-            // Fail closed when the saved session cannot be verified.
-            await clearSession(token);
+            await clearSession(revision);
         }
     }, [clearSession]);
 
     useEffect(() => {
         setUnauthorizedHandler(clearSession);
-        void Promise.resolve().then(validateSession).finally(() => setLoading(false));
+        // Remove credenciais da implementação anterior; a web passa a usar somente o cookie.
+        const restore = async () => {
+            if (usesSessionCookie) await AsyncStorage.removeMany(keys);
+            await validateSession();
+        };
+        void restore().finally(() => setLoading(false));
         const subscription = AppState.addEventListener('change', state => {
             if (state === 'active') void validateSession();
         });
@@ -59,7 +63,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (Platform.OS === 'web') {
             window.addEventListener('pageshow', check);
             window.addEventListener('focus', check);
-            window.addEventListener('storage', check);
         }
         return () => {
             setUnauthorizedHandler(undefined);
@@ -67,39 +70,41 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             if (Platform.OS === 'web') {
                 window.removeEventListener('pageshow', check);
                 window.removeEventListener('focus', check);
-                window.removeEventListener('storage', check);
             }
         };
     }, [clearSession, validateSession]);
 
     useEffect(() => {
         if (!user) return;
-        const timer = setTimeout(() => { void clearSession(); }, Math.min(user.expiresAt - Date.now(), 2147483647));
+        const revision = generation.current;
+        const timer = setTimeout(() => { void clearSession(revision); }, Math.min(user.expiresAt - Date.now(), 2147483647));
         return () => clearTimeout(timer);
     }, [user, clearSession]);
 
     async function signIn(email: string, senha: string) {
-        const revision = ++generation.current;
-        const response = await api.post<{ token: string }>('/v1/auth/login', { email: email.trim(), senha });
-        const token = response.data.token;
-        if (!token) throw new Error('O servidor não retornou um token de acesso.');
-        const { data } = await api.get<Usuario>('/v1/auth/session', { headers: { Authorization: `Bearer ${token}` } });
+        const revision = generation.current = advanceSessionRevision();
+        const response = await api.post<{ token?: string }>('/v1/auth/login', { email: email.trim(), senha });
+        const token = usesSessionCookie ? null : response.data.token;
+        if (!usesSessionCookie && !token) throw new Error('O servidor não retornou um token de acesso.');
+        const { data } = await api.get<Usuario>('/v1/auth/session', token ? { headers: { Authorization: `Bearer ${token}` } } : undefined);
         if (!validSession(data)) throw new Error('Sessão inválida ou expirada.');
         if (revision !== generation.current) return;
-        await AsyncStorage.setMany({ '@Poiesis:user': JSON.stringify(data), '@Poiesis:token': token });
-        currentToken.current = token;
+        if (!usesSessionCookie && token) {
+            await AsyncStorage.setMany({ '@Poiesis:user': JSON.stringify(data), '@Poiesis:token': token });
+        }
+        currentToken.current = token ?? null;
         setUser(data);
     }
     async function signOut() {
+        const revision = generation.current;
         const token = currentToken.current;
-        await clearSession();
-        if (token) {
-            try { await api.post('/v1/auth/logout', undefined, { headers: { Authorization: `Bearer ${token}` } }); }
+        if (usesSessionCookie || token) {
+            try { await api.post('/v1/auth/logout', undefined, token ? { headers: { Authorization: `Bearer ${token}` } } : undefined); }
             catch (error) {
-                // An already expired/revoked token requires no further revocation.
                 if ((error as { response?: { status: number } }).response?.status !== 401) throw error;
             }
         }
+        await clearSession(revision);
     }
     return <AuthContext.Provider value={{ signed: !!user, isAdmin: user?.roles.includes('ADMIN') ?? false, user, loading, signIn, signOut }}>{children}</AuthContext.Provider>;
 };

@@ -76,4 +76,4 @@ hs_err_pid*
 /.run/
 **/*.iml
 **/.idea
-out/
+/out/

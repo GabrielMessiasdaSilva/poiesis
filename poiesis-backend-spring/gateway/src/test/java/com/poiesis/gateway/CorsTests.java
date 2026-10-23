@@ -25,9 +25,10 @@ class CorsTests {
         for (String origin : new String[]{"http://localhost:8087", "http://127.0.0.1:8087", "http://localhost:8090"}) {
             mvc.perform(options("/v1/auth/register").header("Origin", origin)
                     .header("Access-Control-Request-Method", "POST")
-                    .header("Access-Control-Request-Headers", "content-type,authorization"))
+                    .header("Access-Control-Request-Headers", "content-type,authorization,x-auth-mode,x-csrf-token"))
                     .andExpect(status().isOk())
-                    .andExpect(header().string("Access-Control-Allow-Origin", origin));
+                    .andExpect(header().string("Access-Control-Allow-Origin", origin))
+                    .andExpect(header().string("Access-Control-Allow-Credentials", "true"));
         }
     }
 

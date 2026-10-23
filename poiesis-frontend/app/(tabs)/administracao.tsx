@@ -1,45 +1,73 @@
-import { useContext, useState } from 'react';
-import { ScrollView, Text, TextInput, Pressable, ActivityIndicator, View } from 'react-native';
-import api from '../../src/services/api';
+import { useContext, useRef, useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { relatoriosService, type RelatorioVendas, type ResumoProducao } from '../../src/services/relatorios';
+import { mensagemApi } from '../../src/services/erros';
 import AdminGestao from '../../src/components/AdminGestao';
 import { AuthContext } from '../../src/contexts/AuthContext';
+import { Button, Field, Notice, PageHeader, Screen } from '../../src/ui/components';
+import { colors, money, ui } from '../../src/ui/theme';
+import { periodoValido } from '../../src/services/relatorios';
 
-type Producao = { emPendente: number; emCorte: number; emCostura: number; emAcabamento: number; concluidos: number };
-type Vendas = { totalPedidos: number; faturamentoTotal: number };
 export default function Administracao() {
     const { isAdmin } = useContext(AuthContext);
-    const [secao, setSecao] = useState<'Produtos' | 'Customizações' | 'Produção' | 'Relatórios'>('Produtos');
+    const [secao, setSecao] = useState<'Produtos' | 'Produção' | 'Relatórios'>('Produtos');
     const now = new Date();
     const [inicio, setInicio] = useState(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`);
     const [fim, setFim] = useState(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`);
-    const [vendas, setVendas] = useState<Vendas | null>(null);
-    const [producao, setProducao] = useState<Producao | null>(null);
+    const [resultado, setResultado] = useState<{ vendas: RelatorioVendas; producao: ResumoProducao; inicio: string; fim: string } | null>(null);
     const [erro, setErro] = useState('');
     const [busy, setBusy] = useState(false);
+    const trava = useRef(false);
     async function carregar() {
-        setBusy(true); setErro(''); setVendas(null); setProducao(null);
+        if (trava.current) return;
+        setErro(''); setResultado(null);
+        if (!periodoValido(inicio, fim)) { setErro('Informe datas válidas no formato AAAA-MM-DD, com a data inicial anterior ou igual à final.'); return; }
+        trava.current = true; setBusy(true);
         try {
-            const [v, p] = await Promise.all([
-                api.get<Vendas>('/v1/relatorios/vendas', { params: { dataInicio: inicio, dataFim: fim } }),
-                api.get<Producao>('/v1/relatorios/producao'),
-            ]);
-            setVendas(v.data); setProducao(p.data);
-        } catch { setErro('Não foi possível consultar os relatórios. Confira as datas e tente novamente.'); }
-        finally { setBusy(false); }
+            const [vendas, producao] = await Promise.all([relatoriosService.consultarVendas(inicio, fim), relatoriosService.consultarProducao()]);
+            setResultado({ vendas, producao, inicio, fim });
+        } catch (error) { setErro(mensagemApi(error)); }
+        finally { trava.current = false; setBusy(false); }
     }
-    if (!isAdmin) return <Text>Acesso restrito à administração.</Text>;
-    return <ScrollView keyboardShouldPersistTaps="handled" style={{ backgroundColor: '#F3F5F2' }} contentContainerStyle={{ padding: 24, gap: 16, width: '100%', maxWidth: 760, alignSelf: 'center', paddingBottom: 48 }}>
-        <Text style={{ fontSize: 26, fontWeight: '700' }}>Administração</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>{(['Produtos', 'Customizações', 'Produção', 'Relatórios'] as const).map(s => <Pressable key={s} accessibilityRole="button" accessibilityState={{ selected: secao === s }} onPress={() => setSecao(s)} style={{ padding: 12, minHeight: 44, borderRadius: 5, backgroundColor: secao === s ? '#334B35' : '#E2E6E1' }}><Text style={{ color: secao === s ? 'white' : '#202522' }}>{s}</Text></Pressable>)}</View>
+    if (!isAdmin) return <Screen><Notice error>Acesso restrito à administração.</Notice></Screen>;
+    const secoes = [
+        { nome: 'Produtos' as const, icone: 'package' as const, detalhe: 'Produto, variações e editor' },
+        { nome: 'Produção' as const, icone: 'scissors' as const, detalhe: 'Andamento dos pedidos' },
+        { nome: 'Relatórios' as const, icone: 'bar-chart-2' as const, detalhe: 'Vendas e resultados' },
+    ];
+    const descricaoSecao = secoes.find(item => item.nome === secao)?.detalhe;
+    return <Screen>
+        <PageHeader eyebrow="PAINEL ADMINISTRATIVO" title="Gestão do ateliê." description="Cadastre produtos com suas variações e opções de personalização, acompanhe a produção e consulte os resultados." />
+        <View style={{ gap: 11 }}>
+            <Text style={ui.label}>Áreas de gestão</Text>
+            <View style={[ui.row, { alignItems: 'stretch', gap: 10 }]}>{secoes.map(item => {
+                const selecionada = secao === item.nome;
+                return <Pressable key={item.nome} accessibilityRole="button" accessibilityState={{ selected: selecionada }} onPress={() => setSecao(item.nome)} style={{ flexGrow: 1, flexBasis: 190, minHeight: 78, padding: 14, borderRadius: 14, borderWidth: 1, borderColor: selecionada ? colors.primary : colors.line, backgroundColor: selecionada ? colors.soft : colors.paper, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <View style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: selecionada ? colors.paper : colors.background }}><Feather name={item.icone} size={18} color={colors.primary} /></View>
+                    <View style={{ flex: 1, gap: 4 }}><Text style={{ color: colors.ink, fontWeight: '700', fontSize: 14 }}>{item.nome}</Text><Text style={{ color: colors.muted, fontSize: 11 }}>{item.detalhe}</Text></View>
+                    {selecionada && <Feather name="check-circle" size={17} color={colors.primary} />}
+                </Pressable>;
+            })}</View>
+        </View>
+        <View style={{ gap: 5, paddingBottom: 4 }}><Text style={ui.eyebrow}>ÁREA SELECIONADA</Text><Text style={ui.title}>{secao}</Text><Text style={ui.body}>{descricaoSecao}</Text></View>
         {secao !== 'Relatórios' ? <AdminGestao key={secao} secao={secao} /> : <>
-        <Text style={{ fontSize: 24 }}>Relatórios</Text>
-        <Text>Período de vendas (AAAA-MM-DD)</Text>
-        <TextInput accessibilityLabel="Data inicial" value={inicio} onChangeText={setInicio} style={{ borderWidth: 1, padding: 12 }} />
-        <TextInput accessibilityLabel="Data final" value={fim} onChangeText={setFim} style={{ borderWidth: 1, padding: 12 }} />
-        <Pressable accessibilityRole="button" onPress={() => void carregar()} disabled={busy} style={{ padding: 16, backgroundColor: '#334B35' }}><Text style={{ color: 'white' }}>Consultar relatórios</Text></Pressable>
-        {busy && <ActivityIndicator />}{erro && <Text>{erro}</Text>}
-        {vendas && <Text>Pedidos: {vendas.totalPedidos}{'\n'}Valor de pedidos criados: R$ {Number(vendas.faturamentoTotal).toFixed(2)}</Text>}
-        {producao && <Text>Produção atual{'\n'}Pendentes: {producao.emPendente}{'\n'}Em corte: {producao.emCorte}{'\n'}Em costura: {producao.emCostura}{'\n'}Em acabamento: {producao.emAcabamento}{'\n'}Concluídos: {producao.concluidos}</Text>}
+            <View style={ui.card}>
+                <Text style={ui.title}>Um olhar sobre os pedidos</Text><Text style={ui.body}>Escolha o período para consultar os valores dos pedidos criados.</Text>
+                <View style={[ui.row, { alignItems: 'flex-start' }]}>
+                    <View style={{ flex: 1, minWidth: 180 }}><Field label="Data inicial" placeholder="AAAA-MM-DD" value={inicio} onChangeText={setInicio} maxLength={10} editable={!busy} /></View>
+                    <View style={{ flex: 1, minWidth: 180 }}><Field label="Data final" placeholder="AAAA-MM-DD" value={fim} onChangeText={setFim} maxLength={10} editable={!busy} /></View>
+                </View>
+                {!!erro && <Notice error>{erro}</Notice>}
+                <Button title="Consultar relatórios" icon="bar-chart-2" busy={busy} onPress={() => void carregar()} />
+            </View>
+            {resultado && <>
+                <Text style={ui.body}>Período consultado: {resultado.inicio.split('-').reverse().join('/')} a {resultado.fim.split('-').reverse().join('/')}</Text>
+                <View style={[ui.row, { alignItems: 'stretch' }]}>{[['Pedidos criados', String(resultado.vendas.totalPedidos)], ['Valor dos pedidos', money(resultado.vendas.faturamentoTotal)], ['Ticket médio', money(resultado.vendas.ticketMedio)]].map(([label, valor]) => <View key={label} style={[ui.card, { flex: 1, minWidth: 200 }]}><Text style={ui.body}>{label}</Text><Text style={ui.title}>{valor}</Text></View>)}</View>
+                <View style={ui.card}><Text style={ui.title}>Produção agora</Text><Text style={ui.body}>Resumo atual das ordens, independente do período de vendas.</Text>
+                    {([['Pendentes', resultado.producao.emPendente], ['Em corte', resultado.producao.emCorte], ['Em costura', resultado.producao.emCostura], ['Em acabamento', resultado.producao.emAcabamento], ['Concluídas', resultado.producao.concluidos]] as const).map(([label, valor]) => <View key={label} style={[ui.row, { justifyContent: 'space-between', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: colors.line }]}><Text style={ui.body}>{label}</Text><Text style={ui.label}>{valor}</Text></View>)}
+                </View>
+            </>}
         </>}
-    </ScrollView>;
+    </Screen>;
 }

@@ -5,25 +5,27 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUN_DIR="$ROOT/.run-local"
 LOG_DIR="$RUN_DIR/logs"
 
-SERVICES=(login catalogo pedido producao relatorio customizacao gateway)
+SERVICES=(login produto pedido producao relatorio gateway)
+# Apenas para identificar e encerrar processos da estrutura anterior.
+MANAGED_SERVICES=("${SERVICES[@]}" catalogo customizacao)
 
 service_jar() {
     local service="$1"
     if [[ "$service" == "gateway" ]]; then
         printf '%s/gateway/target/gateway-0.0.1-SNAPSHOT.jar' "$ROOT"
     else
-        printf '%s/%s/springframework/target/%s-spring-0.0.1-SNAPSHOT.jar' "$ROOT" "$service" "$service"
+        printf '%s/%s/spring/target/%s-spring-0.0.1-SNAPSHOT.jar' "$ROOT" "$service" "$service"
     fi
 }
 
 service_port() {
     case "$1" in
         login) printf 8081 ;;
-        catalogo) printf 8082 ;;
+        produto|catalogo) printf 8082 ;;
+        customizacao) printf 8086 ;;
         pedido) printf 8083 ;;
         relatorio) printf 8084 ;;
         producao) printf 8085 ;;
-        customizacao) printf 8086 ;;
         gateway) printf 8080 ;;
     esac
 }
@@ -42,10 +44,12 @@ process_matches_service() {
             jar="$cwd/$jar"
         fi
         # Reconhece também processos iniciados antes da correção dos artifactIds.
-        local canonical_jar legacy_jar
+        local canonical_jar legacy_jar previous_jar previous_legacy_jar
         canonical_jar="$(readlink -m "$jar")"
-        legacy_jar="$ROOT/$service/springframework/target/springframework-0.0.1-SNAPSHOT.jar"
-        [[ "$canonical_jar" == "$(service_jar "$service")" || "$canonical_jar" == "$legacy_jar" || "$canonical_jar" == "$RUN_DIR/artifacts/$service.jar" ]]
+        legacy_jar="$ROOT/$service/spring/target/springframework-0.0.1-SNAPSHOT.jar"
+        previous_jar="$ROOT/$service/springframework/target/$service-spring-0.0.1-SNAPSHOT.jar"
+        previous_legacy_jar="$ROOT/$service/springframework/target/springframework-0.0.1-SNAPSHOT.jar"
+        [[ "$canonical_jar" == "$(service_jar "$service")" || "$canonical_jar" == "$legacy_jar" || "$canonical_jar" == "$previous_jar" || "$canonical_jar" == "$previous_legacy_jar" || "$canonical_jar" == "$RUN_DIR/artifacts/$service.jar" ]]
         return
     done
     return 1
@@ -65,7 +69,7 @@ service_pids() {
 stop_services() {
     local service pid index pending failed=0
     local -a stopped_pids=() stopped_services=()
-    for service in "${SERVICES[@]}"; do
+    for service in "${MANAGED_SERVICES[@]}"; do
         while read -r pid; do
             [[ -n "$pid" ]] || continue
             if process_matches_service "$pid" "$service"; then
@@ -109,7 +113,7 @@ stop_services() {
         sleep 1
     done
 
-    for service in "${SERVICES[@]}"; do
+    for service in "${MANAGED_SERVICES[@]}"; do
         pending="$(service_pids "$service")"
         if [[ -n "$pending" ]]; then
             printf 'Não foi possível encerrar %s (PIDs: %s).\n' "$service" "$pending" >&2
@@ -123,7 +127,7 @@ stop_services() {
         fi
     done
     (( failed == 0 )) || return 1
-    printf 'Serviços encerrados; portas 8080 a 8086 livres.\n'
+    printf 'Serviços encerrados; portas dos serviços atuais e anteriores livres.\n'
 }
 
 port_is_open() {
@@ -193,7 +197,7 @@ if [[ "$java_version" != *'21.'* ]]; then
     exit 1
 fi
 
-for service in "${SERVICES[@]}"; do
+for service in "${MANAGED_SERVICES[@]}"; do
     if port_is_open "$(service_port "$service")" || [[ -n "$(service_pids "$service")" ]]; then
         printf '%s já está ativo ou sua porta está ocupada. Execute %s parar antes de iniciar.\n' "$service" "$0" >&2
         exit 1
@@ -214,12 +218,11 @@ done
 
 trap 'trap - ERR INT TERM; stop_services || true; exit 1' ERR INT TERM
 printf '\n=== Iniciando os microsserviços ===\n'
-start_service catalogo 8082 "$(service_jar catalogo)"
+start_service produto 8082 "$(service_jar produto)"
 start_service login 8081 "$(service_jar login)"
 start_service pedido 8083 "$(service_jar pedido)"
 start_service producao 8085 "$(service_jar producao)"
 start_service relatorio 8084 "$(service_jar relatorio)"
-start_service customizacao 8086 "$(service_jar customizacao)"
 start_service gateway 8080 "$(service_jar gateway)"
 
 printf '\nProjeto iniciado. Gateway: http://localhost:8080\n'
