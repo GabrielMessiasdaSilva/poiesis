@@ -70,9 +70,10 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                <version>1.1.19</version>
+                <extensions>true</extensions>
                 <configuration>
-                    <requiredVersion>21</requiredVersion>
-                    <imageName>login</imageName>
+                    <imageName>login-spring</imageName>
                 </configuration>
             </plugin>
         </plugins>
